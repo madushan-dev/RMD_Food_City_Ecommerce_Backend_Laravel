@@ -4017,3 +4017,6 @@ File: Responsive
   font-size: 80% !important;
   padding-left: 5px;
 }
+div.dataTables_wrapper div.dataTables_filter input {
+  color: black !important;
+}
