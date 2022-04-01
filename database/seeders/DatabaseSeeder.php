@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'Madushan',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('1234'),
-            'phone' => '076123456'
+            'phone' => '076123456',
+            'profile_photo'=>'user.png'
         ]);
 
 
@@ -79,7 +80,7 @@ class DatabaseSeeder extends Seeder
             'cost_price' => '60',
             'selling_price' => '80',
             'count' => '50',
-            'category_id' => '4'
+            'category_id' => '4',
         ]);
 
 
