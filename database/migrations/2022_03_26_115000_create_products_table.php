@@ -21,8 +21,8 @@ return new class extends Migration
             $table->tinyInteger('count');
             $table->foreignId('category_id')->constrained('categories')->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->boolean('is_deleted')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

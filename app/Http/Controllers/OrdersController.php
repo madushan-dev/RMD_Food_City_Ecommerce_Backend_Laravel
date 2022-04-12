@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\OrderProduct;
+use App\Models\Product;
 
 class OrdersController extends Controller
 {
@@ -13,7 +16,12 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        return view('Orders.orders');
+        $orders = Order::with('customers')->get();
+ 
+   
+        return view('Orders.orders',[
+            'orders'=>$orders
+        ]);
     }
 
     /**
@@ -43,10 +51,12 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {
-        
-        return view('Orders.single-order')->with('id',$id);
+
+        $order->load('customers');
+        $products = OrderProduct::join('products','products.id','=','order_products.product_id')->join('orders','orders.id','=','order_products.order_id')->where('orders.id','=',$order->id)->get();
+        return view('Orders.single-order',compact('order','products'));
     }
 
     /**
@@ -55,7 +65,7 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Order $order)
     {
         //
     }
@@ -67,9 +77,16 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Order $order)
     {
-        //
+        $validate = $request->validate([
+            'delivery_company'=>'required',
+            'tracking_number'=>'required',
+            'status'=>'required'
+        ]);
+
+        $order->update($validate);
+        return redirect()->back();
     }
 
     /**
@@ -78,9 +95,10 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return redirect()->route('orders');
     }
 
     public function new()

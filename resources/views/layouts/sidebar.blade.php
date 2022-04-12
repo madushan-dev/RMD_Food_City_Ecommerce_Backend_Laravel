@@ -27,28 +27,16 @@
                         </span>
                     </a>
                 </li>
-             
-                <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect">
+                <li>
+                    <a href="/orders" class="waves-effect">
                         <i class="mdi mdi-cart"></i>
-                        <span> Orders </span>
-                        <span class="float-right">
-                            <i class="mdi mdi-chevron-right"></i>
+                        <span> Orders
+                            
                         </span>
                     </a>
-                    
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="/orders">All Orders</a>
-                        </li>
-                        <li>
-                            <a href="/orders/new">Add New Order</a>
-                        </li>
-                    </ul>
                 </li>
-                
-
-
+             
+               
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect">
                         <i class="mdi mdi-animation"></i>

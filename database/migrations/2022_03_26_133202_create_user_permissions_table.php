@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders_payments', function (Blueprint $table) {
+        Schema::create('user_permissions', function (Blueprint $table) {
             $table->id();
-            $table->string('date');
-            $table->integer('amount');
-            $table->string('type');
-            $table->foreignId('order_id')->constrained('orders')->onUpdate('cascade')
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->boolean('is_deleted')->default(0);
+            $table->foreignId('permission_id')->constrained('permissions')->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->boolean('value')->default(0);
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders_payments');
+        Schema::dropIfExists('users_permissions');
     }
 };
