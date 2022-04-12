@@ -27,9 +27,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 // Orders Routes
 Route::controller(OrdersController::class)->group(function () {
-    Route::get('/orders', 'index');
-    Route::get('/orders/new', 'new');
-    Route::get('/orders/{id}', 'show');
-    Route::post('/orders/new', 'store');
+    Route::get('/orders', 'index')->name('orders');
+    Route::get('/orders/{order}', 'show');
+    Route::post('/orders/{order}', 'update');
+    Route::delete('/orders/{order}', 'destroy');
+   
 });
 

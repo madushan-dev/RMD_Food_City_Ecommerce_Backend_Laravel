@@ -13,15 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders_delivery', function (Blueprint $table) {
+        Schema::create('product_reviews', function (Blueprint $table) {
             $table->id();
-            $table->string('agent_name');
-            $table->string('agent_phone');
-            $table->string('tracking_code');
-            $table->foreignId('order_id')->constrained('orders')->onUpdate('cascade')
+            $table->integer('rating');
+            $table->timestamp('date');
+            $table->string('comments');
+            $table->foreignId('product_id')->constrained('products')->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->boolean('is_deleted')->default(0);
+            $table->foreignId('customer_id')->constrained('customers')->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -32,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders_delivery');
+        Schema::dropIfExists('products_reviews');
     }
 };

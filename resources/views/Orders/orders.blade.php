@@ -57,145 +57,45 @@
                                                     <th>Order Id</th>
                                                     <th>Customer</th>
                                                     <th>Date</th>
-                                                    <th>Amount</th>
+                                                    <th>Payment</th>
+                                                    <th>Type</th>
                                                     <th>Status</th>
                                                     <th class="text-right">Action</th>
                                                 </tr>
                                                 </thead>
-
+                                         
                                                 <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Prabash Jayaweera</td>
-                                                    <td>2022/02/05</td>
-                                                    <td class="text-right">Rs 550.00</td>
-                                                    <td><span class="badge badge-pill badge-warning p-2 text-center w-100">Processing</span></td>
-                                                    <td class="text-right"><button type="button" class="btn btn-raised btn-primary px-3 py-0">
-                                                        View </button>
+                                                    @foreach ($orders as $order )
+                                                  
+                                                    <tr>
+                                                        <td>{{ $order->id }}</td>
+
+                                                    
+                                                        <td>{{ $order->customers->first_name ." " . $order->customers->last_name  }}</td>
+                                              
                                                       
-                                                        <button type="button" class="btn btn-raised btn-danger  px-3 py-0">
-                                                            Delete </button></td>
+
+
+                                                        <td>{{ $order->date }}</td>
+                                                        <td class="text-right">Rs. {{ $order->payment_amount }}</td>
+                                                        <td class="text-right">{{ $order->payment_type }}</td>
+                                                        <td><span class="badge badge-pill badge-warning p-2 text-center w-100"> {{ $order->status }}</span></td>
+                                                        <td class="text-right d-flex align-items-center"><a href="{{ route('orders') ."/". $order->id }}" type="button" class="btn btn-raised btn-primary px-3 py-0 mr-1" style="height:100%">
+                                                            View </a>
+                                                        <form action="{{ route('orders')}}/{{ $order->id }}" method="POST" class="m-0">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-raised btn-danger  px-3 py-0">
+                                                                    Delete </button>
+                                                            </form>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Sudeera Kavishka</td>
-                                                    <td>2022/01/10</td>
-                                                    <td class="text-right">Rs 620.00</td>
-                                                    <td><span class="badge badge-pill badge-success p-2 w-100">Complete</span></td>
-                                                    <td class="text-right"><button type="button" class="btn btn-raised btn-primary px-3 py-0">
-                                                        View </button>
-                                                      
-                                                        <button type="button" class="btn btn-raised btn-danger  px-3 py-0">
-                                                            Delete </button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Sudeera Kavishka</td>
-                                                    <td>2022/01/10</td>
-                                                    <td class="text-right">Rs 620.00</td>
-                                                    <td><span class="badge badge-pill badge-success p-2 w-100">Complete</span></td>
-                                                    <td class="text-right"><button type="button" class="btn btn-raised btn-primary px-3 py-0">
-                                                        View </button>
-                                                      
-                                                        <button type="button" class="btn btn-raised btn-danger  px-3 py-0">
-                                                            Delete </button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Sudeera Kavishka</td>
-                                                    <td>2022/01/10</td>
-                                                    <td class="text-right">Rs 620.00</td>
-                                                    <td><span class="badge badge-pill badge-success p-2 w-100">Complete</span></td>
-                                                    <td class="text-right"><button type="button" class="btn btn-raised btn-primary px-3 py-0">
-                                                        View </button>
-                                                      
-                                                        <button type="button" class="btn btn-raised btn-danger  px-3 py-0">
-                                                            Delete </button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Sudeera Kavishka</td>
-                                                    <td>2022/01/10</td>
-                                                    <td class="text-right">Rs 620.00</td>
-                                                    <td><span class="badge badge-pill badge-success p-2 w-100">Complete</span></td>
-                                                    <td class="text-right"><button type="button" class="btn btn-raised btn-primary px-3 py-0">
-                                                        View </button>
-                                                      
-                                                        <button type="button" class="btn btn-raised btn-danger  px-3 py-0">
-                                                            Delete </button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Sudeera Kavishka</td>
-                                                    <td>2022/01/10</td>
-                                                    <td class="text-right">Rs 620.00</td>
-                                                    <td><span class="badge badge-pill badge-success p-2 w-100">Complete</span></td>
-                                                    <td class="text-right"><button type="button" class="btn btn-raised btn-primary px-3 py-0">
-                                                        View </button>
-                                                      
-                                                        <button type="button" class="btn btn-raised btn-danger  px-3 py-0">
-                                                            Delete </button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Sudeera Kavishka</td>
-                                                    <td>2022/01/10</td>
-                                                    <td class="text-right">Rs 620.00</td>
-                                                    <td><span class="badge badge-pill badge-success p-2 w-100">Complete</span></td>
-                                                    <td class="text-right"><button type="button" class="btn btn-raised btn-primary px-3 py-0">
-                                                        View </button>
-                                                      
-                                                        <button type="button" class="btn btn-raised btn-danger  px-3 py-0">
-                                                            Delete </button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Sudeera Kavishka</td>
-                                                    <td>2022/01/10</td>
-                                                    <td class="text-right">Rs 620.00</td>
-                                                    <td><span class="badge badge-pill badge-success p-2 w-100">Complete</span></td>
-                                                    <td class="text-right"><button type="button" class="btn btn-raised btn-primary px-3 py-0">
-                                                        View </button>
-                                                      
-                                                        <button type="button" class="btn btn-raised btn-danger  px-3 py-0">
-                                                            Delete </button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Sudeera Kavishka</td>
-                                                    <td>2022/01/10</td>
-                                                    <td class="text-right">Rs 620.00</td>
-                                                    <td><span class="badge badge-pill badge-success p-2 w-100">Complete</span></td>
-                                                    <td class="text-right"><button type="button" class="btn btn-raised btn-primary px-3 py-0">
-                                                        View </button>
-                                                      
-                                                        <button type="button" class="btn btn-raised btn-danger  px-3 py-0">
-                                                            Delete </button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Sudeera Kavishka</td>
-                                                    <td>2022/01/10</td>
-                                                    <td class="text-right">Rs 620.00</td>
-                                                    <td><span class="badge badge-pill badge-success p-2 w-100">Complete</span></td>
-                                                    <td class="text-right"><button type="button" class="btn btn-raised btn-primary px-3 py-0">
-                                                        View </button>
-                                                      
-                                                        <button type="button" class="btn btn-raised btn-danger  px-3 py-0">
-                                                            Delete </button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Sudeera Kavishka</td>
-                                                    <td>2022/01/10</td>
-                                                    <td class="text-right">Rs 620.00</td>
-                                                    <td><span class="badge badge-pill badge-success p-2 w-100">Complete</span></td>
-                                                    <td class="text-right"><button type="button" class="btn btn-raised btn-primary px-3 py-0">
-                                                        View </button>
-                                                      
-                                                        <button type="button" class="btn btn-raised btn-danger  px-3 py-0">
-                                                            Delete </button></td>
-                                                </tr>
+                                                         </td>
+
+                                                          
+                                                        
+                                                    @endforeach
+                                               
+                                       
                                                 </tbody>
                                             </table>            
                                         </div>

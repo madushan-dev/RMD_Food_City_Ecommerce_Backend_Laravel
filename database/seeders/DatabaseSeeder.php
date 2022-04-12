@@ -83,6 +83,47 @@ class DatabaseSeeder extends Seeder
             'category_id' => '4',
         ]);
 
+        
+        // Insert Customer
+        DB::table('customers')->insert([
+            'first_name' => 'Prabash',
+            'last_name' => 'Jayaweera',
+            'address' => 'Badulla',
+            'email' => 'prabash@gmail.com',
+            'password' => bcrypt('1234'),
+            'phone' => '077123456',
+        ]);
+
+         // Insert order
+         DB::table('orders')->insert([
+            'status' => 'Processing',
+            'customer_id' => '1',
+            'payment_type'=>'Card Payment',
+            'payment_amount'=>'5000'
+        ]);
+
+           // Insert order_Products
+        DB::table('order_products')->insert([
+            'order_id' => '1',
+            'product_id' => '1',
+            'quantity' => '20'
+        ]);
+        DB::table('order_products')->insert([
+            'order_id' => '1',
+            'product_id' => '2',
+            'quantity' => '10'
+        ]);
+        DB::table('order_products')->insert([
+            'order_id' => '1',
+            'product_id' => '3',
+            'quantity' => '5'
+        ]);
+        DB::table('order_products')->insert([
+            'order_id' => '1',
+            'product_id' => '4',
+            'quantity' => '5'
+        ]);
+
 
     }
 }

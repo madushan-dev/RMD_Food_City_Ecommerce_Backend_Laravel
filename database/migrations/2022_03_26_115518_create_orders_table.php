@@ -15,12 +15,16 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('date');
+            $table->timestamp('date');
             $table->string('status');
             $table->foreignId('customer_id')->constrained('customers')->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->boolean('is_deleted')->default(0);
+            $table->string('payment_type');
+            $table->integer('payment_amount');
+            $table->string('delivery_company')->nullable();
+            $table->string('tracking_number')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
