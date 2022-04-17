@@ -48,7 +48,7 @@
                     
                     <ul class="list-unstyled">
                         <li>
-                            <a href="ui-badge.html">All Products</a>
+                            <a href="/products">All Products</a>
                         </li>
                         <li>
                             <a href="ui-badge.html">Add New Product</a>
