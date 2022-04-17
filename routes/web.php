@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\MessagesController;
@@ -15,8 +16,6 @@ use App\Http\Controllers\MessagesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 // Login Page Routes
 Route::get('/',function(){
     return view('dashboard');
@@ -26,15 +25,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-
-
 // Orders Routes
 Route::controller(OrdersController::class)->group(function () {
     Route::get('/orders', 'index')->name('orders');
     Route::get('/orders/{order}', 'show');
     Route::post('/orders/{order}', 'update');
     Route::delete('/orders/{order}', 'destroy');
-   
+});
+
+// Products Routes
+Route::controller(ProductsController::class)->group(function () {
+    Route::get('/products', 'index')->name('products');
+    Route::delete('/products/{product}', 'destroy');
 });
 
 // Customers routes
@@ -45,7 +47,6 @@ Route::controller(CustomersController::class)->group(function () {
     Route::get('/customers/{customer}', 'show');
     Route::post('/customers/{customer}', 'update');
     Route::delete('/customers/{customer}', 'destroy');
-   
 });
 
 // employees routes
@@ -56,6 +57,8 @@ Route::controller(EmployeesController::class)->group(function () {
     Route::get('/employees/{employee}', 'show');
     Route::post('/employees/{employee}', 'update');
     Route::delete('/employees/{employee}', 'destroy');
+});
+
    
 });
 
