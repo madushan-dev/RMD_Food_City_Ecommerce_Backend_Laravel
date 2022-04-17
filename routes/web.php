@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\ProductsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,9 @@ Route::controller(OrdersController::class)->group(function () {
     Route::get('/orders/{order}', 'show');
     Route::post('/orders/{order}', 'update');
     Route::delete('/orders/{order}', 'destroy');
-   
 });
 
+// Products Routes
+Route::controller(ProductsController::class)->group(function () {
+    Route::get('/products', 'index')->name('products');
+});
