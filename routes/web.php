@@ -37,4 +37,5 @@ Route::controller(OrdersController::class)->group(function () {
 // Products Routes
 Route::controller(ProductsController::class)->group(function () {
     Route::get('/products', 'index')->name('products');
+    Route::delete('/products/{product}', 'destroy');
 });

@@ -45,6 +45,7 @@
                                                         <th>Selling Price</th>
                                                         <th>Stock Count</th>
                                                         <th>Category</th>
+                                                        <th>Actions</th>
                                                     </tr>
                                                 </thead>
                                          
@@ -58,6 +59,44 @@
                                                         <th>{{ $product->selling_price }}</th>
                                                         <th>{{ $product->count }}</th>
                                                         <td>{{ $product->categories->name  }}</td>
+                                                        <td>
+
+                                                        <button type="submit" class="btn btn-raised btn-danger  px-3 py-0" data-toggle="modal" data-target="#deleteModal">
+                                                            Delete 
+                                                        </button>
+
+                                                        <!-- The Modal -->
+                                                        <div class="modal fade" id="deleteModal">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+      
+                                                                    <!-- Modal Header -->
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">Confirmation...!</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                    </div>
+        
+                                                                    <!-- Modal body -->
+                                                                    <div class="modal-body">
+                                                                       This action cannot be undone!
+                                                                    </div>
+        
+                                                                    <!-- Modal footer -->
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-raised btn-secontary" data-dismiss="modal">Cancel</button>
+                                                                        <form action="{{ route('products')}}/{{ $product->id }}" method="POST" class="m-0">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <button type="submit" class="btn btn-raised btn-danger ml-2">
+                                                                                Delete 
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
+        
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
                                                     </tr>
                                                     @endforeach
                                                 <tbody>
