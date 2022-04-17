@@ -120,7 +120,7 @@
                 </li>
 
                 <li>
-                    <a href="index.html" class="waves-effect">
+                    <a href="/messages" class="waves-effect">
                         <i class="mdi mdi-message-processing"></i>
                         <span> Messages
                             

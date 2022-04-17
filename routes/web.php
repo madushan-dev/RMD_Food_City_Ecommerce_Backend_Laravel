@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\MessagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,4 +57,10 @@ Route::controller(EmployeesController::class)->group(function () {
     Route::post('/employees/{employee}', 'update');
     Route::delete('/employees/{employee}', 'destroy');
    
+});
+
+// Messages routes
+Route::controller(MessagesController::class)->group(function () {
+    Route::get('/messages', 'index')->name('messages');
+    Route::get('/messages/{message}', 'show');
 });
