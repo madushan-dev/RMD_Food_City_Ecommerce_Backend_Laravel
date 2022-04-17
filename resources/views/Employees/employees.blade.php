@@ -1,4 +1,4 @@
-@extends('layouts.app',['title' => 'Customers'])
+@extends('layouts.app',['title' => 'Employees'])
 
 @section('content')
 <!DOCTYPE html>
@@ -38,7 +38,7 @@
                                                 <li class="breadcrumb-item active">All Customers</li>
                                             </ol>
                                         </div>
-                                        <h4 class="page-title">All Customers</h4>
+                                        <h4 class="page-title">All Employees</h4>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
@@ -66,25 +66,25 @@
                                                 </thead>
                                          
                                                 <tbody>
-                                                    @foreach ($customers as $customer )
+                                                    @foreach ($employees as $employee )
                                                   
                                                     <tr>
-                                                        <td>{{ $customer->id }}</td>
-                                                        <td><img class="img-fluid w-25"  src="images/users/{{ $customer->profile_photo }}" alt=""></td>
+                                                        <td>{{ $employee->id }}</td>
+                                                        <td><img class="img-fluid w-25"  src="images/users/{{ $employee->profile_photo }}" alt=""></td>
 
                                                     
-                                                        <td>{{ $customer->first_name }}</td>
+                                                        <td>{{ $employee->first_name }}</td>
                                               
                                                       
 
 
-                                                        <td>{{ $customer->last_name }}</td>
-                                                        <td class="text-right"> {{ $customer->address }}</td>
-                                                        <td class="text-right">{{ $customer->email }}</td>
-                                                        <td><span class="text-right"> {{ $customer->phone }}</span></td>
-                                                        <td class="text-right d-flex align-items-center"><a href="{{ route('customers') ."/". $customer->id }}" type="button" class="btn btn-raised btn-primary px-3 py-0 mr-1" style="height:100%">
+                                                        <td>{{ $employee->last_name }}</td>
+                                                        <td class="text-right"> {{ $employee->address }}</td>
+                                                        <td class="text-right">{{ $employee->email }}</td>
+                                                        <td><span class="text-right"> {{ $employee->phone }}</span></td>
+                                                        <td class="text-right d-flex align-items-center"><a href="{{ route('employees') ."/". $employee->id }}" type="button" class="btn btn-raised btn-primary px-3 py-0 mr-1" style="height:100%">
                                                             Edit </a>
-                                                        <form action="{{ route('customers')}}/{{ $customer->id }}" method="POST" class="m-0">
+                                                        <form action="{{ route('employees')}}/{{ $employee->id }}" method="POST" class="m-0">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" class="btn btn-raised btn-danger  px-3 py-0">

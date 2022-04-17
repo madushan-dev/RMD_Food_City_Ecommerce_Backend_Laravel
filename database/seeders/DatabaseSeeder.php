@@ -90,6 +90,7 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'Jayaweera',
             'address' => 'Badulla',
             'email' => 'prabash@gmail.com',
+            'profile_photo' => 'user.png',
             'password' => bcrypt('1234'),
             'phone' => '077123456',
         ]);

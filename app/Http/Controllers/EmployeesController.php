@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use Illuminate\Http\Request;
-use App\Models\Customer;
 
-class CustomersController extends Controller
+class EmployeesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        $customers = Customer::get();
-        return view('customers.customers',[
-            'customers'=>$customers
+        $employees = Employee::get();
+        return view('employees.employees',[
+            'employees'=>$employees
         ]);
     }
 
@@ -38,7 +38,7 @@ class CustomersController extends Controller
      */
     public function store(Request $request)
     {
-        $customer = Customer::create([
+        $employee = Employee::create([
             'first_name' =>$request->input('first_name'),
             'last_name' =>$request->input('last_name'),
             'address' =>$request->input('address'),
@@ -47,7 +47,7 @@ class CustomersController extends Controller
             'password' => bcrypt($request->input('password'))
         ]);
 
-        return redirect()->route('customers');
+        return redirect()->route('employees');
 
     }
 
@@ -57,10 +57,11 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show(Employee $employee)
     {
-        $customer->get();
-        return view('Customers.single-customer',compact('customer','customer'));
+        $employee->get();
+       
+        return view('Employees.single-employee',compact('employee','employee'));
     }
 
     /**
@@ -81,9 +82,9 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, Employee $employee)
     {
-        $validate = $request->validate([
+               $validate = $request->validate([
             'first_name'=>'required',
             'last_name'=>'required',
             'address'=>'required',
@@ -91,7 +92,7 @@ class CustomersController extends Controller
             'phone'=>'required'
         ]);
 
-        $customer->update($validate);
+        $employee->update($validate);
         return redirect()->back();
     }
 
@@ -101,22 +102,19 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy(Employee $employee)
     {
-        $customer->delete();
-        return redirect()->route('customers');
+        $employee->delete();
+        return redirect()->route('employees');
     }
 
-    /**
+        /**
      * Add new customer
      */
 
-    public function new(Customer $customer)
+    public function new(Employee $employee)
     {
-        return view('Customers.new-customer');
+        return view('Employees.new-employee');
     }
 
 }
-
-
-
