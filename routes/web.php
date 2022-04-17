@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\CustomersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,3 +35,11 @@ Route::controller(OrdersController::class)->group(function () {
    
 });
 
+
+Route::controller(CustomersController::class)->group(function () {
+    Route::get('/customers', 'index')->name('customers');
+    Route::get('/customers/{customer}', 'show');
+    Route::post('/customers/{customer}', 'update');
+    Route::delete('/customers/{customer}', 'destroy');
+   
+});

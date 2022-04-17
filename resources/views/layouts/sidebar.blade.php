@@ -70,7 +70,7 @@
                     </a>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="tables-basic.html">All Customers</a>
+                            <a href="/customers">All Customers</a>
                         </li>
                         <li>
                             <a href="tables-datatable.html">Add New Customer</a>
