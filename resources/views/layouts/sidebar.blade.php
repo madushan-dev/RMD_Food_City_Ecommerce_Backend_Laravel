@@ -128,7 +128,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="index.html" class="waves-effect">
+                    <a href="/reviews" class="waves-effect">
                         <i class="mdi mdi-star-circle"></i>
                         <span> Reviews
                             
@@ -136,7 +136,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="index.html" class="waves-effect">
+                    <a href="/settings" class="waves-effect">
                         <i class="fa fa-gear"></i>
                         <span> Settings
                             
