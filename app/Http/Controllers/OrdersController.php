@@ -101,8 +101,4 @@ class OrdersController extends Controller
         return redirect()->route('orders');
     }
 
-    public function new()
-    {
-        return view("Orders.new-order");
-    }
 }

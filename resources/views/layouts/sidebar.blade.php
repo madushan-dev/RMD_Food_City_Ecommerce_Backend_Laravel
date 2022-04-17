@@ -73,7 +73,7 @@
                             <a href="/customers">All Customers</a>
                         </li>
                         <li>
-                            <a href="tables-datatable.html">Add New Customer</a>
+                            <a href="/customers/new">Add New Customer</a>
                         </li>
                     </ul>
                 </li>
@@ -110,10 +110,10 @@
                     </a>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="form-elements.html">All Employees</a>
+                            <a href="/employees">All Employees</a>
                         </li>
                         <li>
-                            <a href="form-validation.html">Add New Employee</a>
+                            <a href="/employees/new">Add New Employee</a>
                         </li>
                         
                     </ul>
