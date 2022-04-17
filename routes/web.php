@@ -41,6 +41,8 @@ Route::controller(ProductsController::class)->group(function () {
     Route::delete('/products/{product}', 'destroy');
     Route::get('/products/{product}', 'show');
     Route::post('/products/{product}', 'update');
+    Route::get('/products/new', 'new');
+    Route::post('/products/new', 'store');
 });
 
 // Customers routes

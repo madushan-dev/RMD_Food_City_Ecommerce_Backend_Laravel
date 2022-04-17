@@ -1,7 +1,7 @@
 @php
-    $title = 'Product - '.$product->id;
+    $title = 'New Product';
 @endphp
-@extends('layouts.app',['title' => $title])
+@extends('layouts.app',['titile' => $title])
 
 @section('content')
 <!DOCTYPE html>
@@ -38,7 +38,7 @@
                                 <div class="col-md-12 col-xl-12">
                                     <div class="card m-b-30">
                                         <div class="card-body">
-                                        <form action="{{ route('products')}}/{{ $product->id }}" method="POST">
+                                        <form action="{{ route('products')}}/store" method="POST">
                                                 @csrf
                                             <div class="general-label">
                                                 <div class="row">

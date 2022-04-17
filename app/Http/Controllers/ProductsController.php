@@ -42,4 +42,23 @@ class ProductsController extends Controller
         $product->update($validate);
         return redirect()->back();
     }
+
+    public function store(Request $request)
+    {
+        $product = Product::create([
+            'name' =>$request->input('product_name'),
+            'cost_price' =>$request->input('cost_price'),
+            'selling_price' =>$request->input('selling_price'),
+            'count' =>$request->input('count'),
+            'category_id' =>$request->input('category')
+        ]);
+
+        return redirect()->route('products');
+
+    }
+
+    public function new(Product $product)
+    {
+        return view('Products.new-product');
+    }
 }
