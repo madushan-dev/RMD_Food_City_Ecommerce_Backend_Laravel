@@ -6,6 +6,8 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\ReviewsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,3 +68,15 @@ Route::controller(MessagesController::class)->group(function () {
     Route::get('/messages/{message}', 'show');
     Route::delete('/messages/{message}', 'destroy');
 });
+// Reviews routes
+Route::controller(SettingsController::class)->group(function () {
+    Route::get('/settings', 'index')->name('reviews');
+});
+
+
+// Settings routes
+Route::controller(ReviewsController::class)->group(function () {
+    Route::get('/reviews', 'index')->name('reviews');
+});
+
+
