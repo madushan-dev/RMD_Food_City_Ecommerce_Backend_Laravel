@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Order;
-use App\Models\OrderProduct;
-use App\Models\Product;
+use App\Models\Customer;
 
-class OrdersController extends Controller
+class CustomersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +14,9 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = Order::with('customers')->get();
- 
-   
-        return view('Orders.orders',[
-            'orders'=>$orders
+        $customers = Customer::get();
+        return view('customers.customers',[
+            'customers'=>$customers
         ]);
     }
 
@@ -42,7 +38,17 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $customer = Customer::create([
+            'first_name' =>$request->input('first_name'),
+            'last_name' =>$request->input('last_name'),
+            'address' =>$request->input('address'),
+            'email' =>$request->input('email'),
+            'phone' =>$request->input('phone'),
+            'password' => bcrypt($request->input('password'))
+        ]);
+
+        return redirect()->route('customers');
+
     }
 
     /**
@@ -51,12 +57,10 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Customer $customer)
     {
-
-        $order->load('customers');
-        $products = OrderProduct::join('products','products.id','=','order_products.product_id')->join('orders','orders.id','=','order_products.order_id')->where('orders.id','=',$order->id)->get();
-        return view('Orders.single-order',compact('order','products'));
+        $customer->get();
+        return view('Customers.single-customer',compact('customer','customer'));
     }
 
     /**
@@ -65,7 +69,7 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit($id)
     {
         //
     }
@@ -77,15 +81,17 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, Customer $customer)
     {
         $validate = $request->validate([
-            'delivery_company'=>'required',
-            'tracking_number'=>'required',
-            'status'=>'required'
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'address'=>'required',
+            'email'=>'required',
+            'phone'=>'required'
         ]);
 
-        $order->update($validate);
+        $customer->update($validate);
         return redirect()->back();
     }
 
@@ -95,10 +101,22 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(Customer $customer)
     {
-        $order->delete();
-        return redirect()->route('orders');
+        $customer->delete();
+        return redirect()->route('customers');
+    }
+
+    /**
+     * Add new customer
+     */
+
+    public function new(Customer $customer)
+    {
+        return view('Customers.new-customer');
     }
 
 }
+
+
+
