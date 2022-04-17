@@ -15,7 +15,7 @@ class EmployeesController extends Controller
     public function index()
     {
         $employees = Employee::get();
-        return view('employees.employees',[
+        return view('Employees.employees',[
             'employees'=>$employees
         ]);
     }

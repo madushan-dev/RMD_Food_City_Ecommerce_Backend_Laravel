@@ -15,7 +15,7 @@ class MessagesController extends Controller
     public function index()
     {
         $messages = Message::get();
-        return view('messages.messages',[
+        return view('Messages.messages',[
             'messages'=>$messages
         ]);
     }
