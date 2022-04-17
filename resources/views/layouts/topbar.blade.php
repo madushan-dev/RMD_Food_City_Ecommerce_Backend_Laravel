@@ -28,7 +28,7 @@
                                     <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                                         aria-expanded="false">
                                         <i class="ti-email noti-icon"></i>
-                                        <span class="badge badge-danger heartbit noti-icon-badge">5</span>
+                                        
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
                                         <!-- item-->
@@ -38,6 +38,8 @@
                                         </div>
 
                                         <!-- item-->
+
+                                        
                                         <a href="javascript:void(0);" class="dropdown-item notify-item">
                                             <div class="notify-icon">
                                                 <img src="" alt="user-img" class="img-fluid rounded-circle"
@@ -48,28 +50,7 @@
                                             </p>
                                         </a>
 
-                                        <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                            <div class="notify-icon">
-                                                <img src="" alt="user-img" class="img-fluid rounded-circle"
-                                                /> </div>
-                                            <p class="notify-details">
-                                                <b>Thomas J. Mimms</b>
-                                                <small class="text-muted">You have 87 unread messages</small>
-                                            </p>
-                                        </a>
-
-                                        <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                            <div class="notify-icon">
-                                                <img src="" alt="user-img" class="img-fluid rounded-circle"
-                                                /> </div>
-                                            <p class="notify-details">
-                                                <b>Luis M. Konrad</b>
-                                                <small class="text-muted">It is a long established fact that a reader will</small>
-                                            </p>
-                                        </a>
-
+                                    
                                         <!-- All-->
                                         <a href="javascript:void(0);" class="dropdown-item notify-item">
                                             View All

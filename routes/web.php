@@ -64,4 +64,5 @@ Route::controller(EmployeesController::class)->group(function () {
 Route::controller(MessagesController::class)->group(function () {
     Route::get('/messages', 'index')->name('messages');
     Route::get('/messages/{message}', 'show');
+    Route::delete('/messages/{message}', 'destroy');
 });
