@@ -61,6 +61,10 @@
                                                         <td>{{ $product->categories->name  }}</td>
                                                         <td>
 
+                                                        <a href="{{ route('products') ."/". $product->id }}" type="button" class="btn btn-raised btn-primary px-3 py-0 mr-1" style="height:100%">
+                                                            Edit 
+                                                        </a>
+
                                                         <button type="submit" class="btn btn-raised btn-danger  px-3 py-0" data-toggle="modal" data-target="#deleteModal">
                                                             Delete 
                                                         </button>

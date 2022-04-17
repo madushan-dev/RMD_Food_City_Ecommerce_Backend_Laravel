@@ -21,4 +21,25 @@ class ProductsController extends Controller
         $product->delete();
         return redirect()->route('products');
     }
+
+
+    public function show(Product $product)
+    {
+        $product->get();
+        return view('Products.single-product',compact('product','product'));
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        $validate = $request->validate([
+            'name'=>'required',
+            'cost_price'=>'required',
+            'selling_price'=>'required',
+            'count'=>'required',
+            'category_id'=>'required'
+        ]);
+
+        $product->update($validate);
+        return redirect()->back();
+    }
 }
