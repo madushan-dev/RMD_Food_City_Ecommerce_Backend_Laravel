@@ -59,8 +59,6 @@ Route::controller(EmployeesController::class)->group(function () {
     Route::delete('/employees/{employee}', 'destroy');
 });
 
-   
-});
 
 // Messages routes
 Route::controller(MessagesController::class)->group(function () {
