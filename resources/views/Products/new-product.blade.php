@@ -38,38 +38,47 @@
                                 <div class="col-md-12 col-xl-12">
                                     <div class="card m-b-30">
                                         <div class="card-body">
-                                        <form action="{{ route('products')}}/store" method="POST">
+                                        <form action="{{ route('products')}}/new" method="POST">
                                                 @csrf
                                             <div class="general-label">
                                                 <div class="row">
                                                     <div class="form-group mb-2 col-6">
                                                         <h4 class="header-title mt-0 pb-2">Name</h4>
                                                     
-                                                        <input type="text" name="product_name" id="" class="form-control mb-3 product-status-form" placeholder="Enter Product Name" value="{{ $product->name }}">
+                                                        <input type="text" name="product_name" id="" class="form-control mb-3 product-status-form" placeholder="Enter Product Name" value="">
                                                     </div>
                                                     <div class="form-group mb-2 col-6">
                                                         <h4 class="header-title mt-0 pb-2">Cost Price</h4>
                                                     
-                                                        <input type="text" name="cost_price" id="" class="form-control mb-3 product-status-form" placeholder="Enter Cost Price" value="{{ $product->cost_price }}">
+                                                        <input type="text" name="cost_price" id="" class="form-control mb-3 product-status-form" placeholder="Enter Cost Price" value="">
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="form-group mb-2 col-6">
                                                         <h4 class="header-title mt-0 pb-2">Selling Price</h4>
                                                     
-                                                        <input type="text" name="selling_price" id="" class="form-control mb-3 product-status-form" placeholder="Enter Selling Price" value="{{ $product->selling_price }}">
+                                                        <input type="text" name="selling_price" id="" class="form-control mb-3 product-status-form" placeholder="Enter Selling Price" value="">
                                                     </div>
                                                     <div class="form-group mb-2 col-6">
                                                         <h4 class="header-title mt-0 pb-2">Count</h4>
                                                     
-                                                        <input type="text" name="count" id="" class="form-control mb-3 product-status-form" placeholder="Enter Product Count" value="{{ $product->count }}">
+                                                        <input type="text" name="count" id="" class="form-control mb-3 product-status-form" placeholder="Enter Product Count" value="">
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="form-group mb-2 col-6">
-                                                        <h4 class="header-title mt-0 pb-2">Category</h4>
+                                                        <h4 class="header-title mt-0 pb-2  ">Category</h4>
                                                     
-                                                        <input type="text" name="category" id="" class="form-control mb-3 product-status-form" placeholder="Enter Category" value="{{ $product->category }}">
+                                                        
+                                                        <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="category_id">
+
+                                                             @foreach ($categories as $category)
+                                                             <option value="{{ $category->id }}"
+                                                            >{{ $category->name }}</option>
+
+                                                       
+                                                        @endforeach
+                                                    </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -77,7 +86,7 @@
                                             <div class="row">
                                                 
                                             </div>
-                                            <button type="submit" class="btn btn-primary btn-raised mb-0 w-100">Submit</button>
+                                            <button type="submit" class="btn btn-primary btn-raised mb-0 w-100 mt-3">Submit</button>
                                         </form>
                                         </div>         
                                     </div>
