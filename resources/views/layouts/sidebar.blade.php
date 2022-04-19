@@ -143,6 +143,14 @@
                         </span>
                     </a>
                 </li>
+                <li>
+                    <a href="/profile/{{ Auth::user()->id }}" class="waves-effect">
+                        <i class="fa fa-user"></i>
+                        <span> Edit Profile
+                            
+                        </span>
+                    </a>
+                </li>
 
             </ul>
         </div>

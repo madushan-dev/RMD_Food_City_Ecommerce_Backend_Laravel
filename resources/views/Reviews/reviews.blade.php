@@ -72,16 +72,16 @@
                                                         <td>{{ $review->id }}</td>
 
                                                     
-                                                        <td>{{ $review->created_at }}</td>
+                                                        <td class="w-100">{{ $review->created_at }}</td>
                                               
                                                       
 
 
-                                                        <td>{{ $review->product_id }}</td>
-                                                        <td class="text-right">{{ $review->customer_id }}</td>
+                                                        <td>{{ $review->products->name }}</td>
+                                                        <td>{{ $review->customers->first_name ." ".$review->customers->last_name }}</td>
                                                         
                                                         
-                                                        <td class="text-right w-100">
+                                                        <td class="w-100">
                                                             @for ($i = $review->rating; $i > 0; $i--)
                                                             <i class="mdi mdi-star"></i>
                                                              @endfor

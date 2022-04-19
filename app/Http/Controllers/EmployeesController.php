@@ -61,7 +61,7 @@ class EmployeesController extends Controller
     {
         $employee->get();
        
-        return view('Employees.single-employee',compact('employee','employee'));
+        return view('Employees.single-employee');
     }
 
     /**
