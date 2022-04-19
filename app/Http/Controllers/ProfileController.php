@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Review;
+use App\Models\Employee;
 
-class ReviewsController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,7 @@ class ReviewsController extends Controller
      */
     public function index()
     {
-        $reviews = Review::with('products')->with('customers')->get();
-
-        return view('Reviews.reviews',[
-            'reviews'=>$reviews
-        ]);
+   
     }
 
     /**
@@ -48,10 +44,10 @@ class ReviewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Review $review)
+    public function show(Employee $employee)
     {
-        $review->load('customers');
-        return view('Reviews.single-review',compact('review','review'));
+        $employee->get();
+        return view('profile.edit-profile',compact('employee','employee'));
     }
 
     /**
@@ -72,13 +68,17 @@ class ReviewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Review $review)
+    public function update(Request $request, Employee $employee)
     {
-        $validate = $request->validate([
-            'status'=>'required'
+            $validate = $request->validate([
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'address'=>'required',
+            'email'=>'required',
+            'phone'=>'required'
         ]);
 
-        $review->update($validate);
+        $employee->update($validate);
         return redirect()->back();
     }
 
@@ -88,9 +88,8 @@ class ReviewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Review $review)
+    public function destroy($id)
     {
-        $review->delete();
-        return redirect()->route('reviews');
+        //
     }
 }

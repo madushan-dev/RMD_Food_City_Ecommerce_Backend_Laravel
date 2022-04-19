@@ -8,6 +8,8 @@ use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\ProfileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +28,7 @@ Route::get('/',function(){
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
 
 // Orders Routes
 Route::controller(OrdersController::class)->group(function () {
@@ -77,6 +80,14 @@ Route::controller(SettingsController::class)->group(function () {
 // Settings routes
 Route::controller(ReviewsController::class)->group(function () {
     Route::get('/reviews', 'index')->name('reviews');
+    Route::get('/reviews/{review}', 'show');
+    Route::post('/reviews/{review}', 'update');
+    Route::delete('/reviews/{review}', 'destroy');
 });
 
+// profile routes
+Route::controller(ProfileController::class)->group(function () {
+    Route::get('/profile', 'show')->name('profile');
+    Route::post('/profile/{employee}', 'update');
+});
 

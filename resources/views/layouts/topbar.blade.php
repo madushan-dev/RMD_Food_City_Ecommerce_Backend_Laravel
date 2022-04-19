@@ -33,26 +33,29 @@
                                     <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
                                         <!-- item-->
                                         <div class="dropdown-item noti-title align-self-center">
-                                            <h5>
-                                                <span class="badge badge-danger float-right">745</span>Messages</h5>
+                                       
                                         </div>
 
                                         <!-- item-->
 
-                                        
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        @foreach ($messages as $message)
+                                        <a href="{{ route('messages').'/'.$message->id }}" class="dropdown-item notify-item">
                                             <div class="notify-icon">
-                                                <img src="" alt="user-img" class="img-fluid rounded-circle"
+                                                <img src="/images/message.png" alt="msg-icon" class="img-fluid"
                                                 /> </div>
+                                          
                                             <p class="notify-details">
-                                                <b>Charles M. Jones</b>
-                                                <small class="text-muted">Dummy text of the printing and typesetting industry.</small>
+                                                <b>{{ $message->name }}</b>
+                                                <small class="text-muted">{{ $message->message }}</small>
                                             </p>
                                         </a>
 
+                                            
+                                        @endforeach
+                                      
                                     
                                         <!-- All-->
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <a href="{{ route('messages') }}" class="dropdown-item notify-item">
                                             View All
                                         </a>
 
@@ -73,17 +76,10 @@
                                     <div class="dropdown-menu dropdown-menu-right profile-dropdown" style="width: 200px;">
                                         <!-- item-->
                                         <div class="dropdown-item noti-title">
-                                            <h5>{{ Auth::user()->name; }}</h5>
+                                            <h5>Welcome {{ Auth::user()->first_name; }}</h5>
                                         </div>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{ route('profile') }}">
                                             <i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="mdi mdi-wallet m-r-5 text-muted"></i> My Wallet</a>
-                                        <a class="dropdown-item d-block" href="#">
-                                            <span class="badge badge-success float-right">5</span>
-                                            <i class="mdi mdi-settings m-r-5 text-muted"></i> Settings</a>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="mdi mdi-lock-open-outline m-r-5 text-muted"></i> Lock screen</a>
                                         <div class="dropdown-divider"></div>
                                         <form method="POST" action="{{ route('logout') }}" x-data>
                                                 @csrf
