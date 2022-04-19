@@ -144,7 +144,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/profile/{{ Auth::user()->id }}" class="waves-effect">
+                    <a href="/profile" class="waves-effect">
                         <i class="fa fa-user"></i>
                         <span> Edit Profile
                             
