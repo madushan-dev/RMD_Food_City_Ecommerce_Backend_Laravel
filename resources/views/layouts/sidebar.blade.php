@@ -51,10 +51,10 @@
                             <a href="/products">All Products</a>
                         </li>
                         <li>
-                            <a href="ui-badge.html">Add New Product</a>
+                            <a href="/products/new">Add New Product</a>
                         </li>
                         <li>
-                            <a href="ui-badge.html">Categories</a>
+                            <a href="/products/categories">Categories</a>
                         </li>
                     </ul>
                 </li>

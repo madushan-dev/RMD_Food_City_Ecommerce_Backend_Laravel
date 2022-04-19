@@ -41,7 +41,12 @@ Route::controller(OrdersController::class)->group(function () {
 // Products Routes
 Route::controller(ProductsController::class)->group(function () {
     Route::get('/products', 'index')->name('products');
+    Route::get('/products/new', 'new');
+    Route::post('/products/new','store');
     Route::delete('/products/{product}', 'destroy');
+    Route::get('/products/{product}', 'show');
+    Route::post('/products/{product}', 'update'); 
+    
 });
 
 // Customers routes

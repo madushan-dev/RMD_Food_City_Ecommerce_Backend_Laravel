@@ -15,7 +15,7 @@ class CustomersController extends Controller
     public function index()
     {
         $customers = Customer::get();
-        return view('customers.customers',[
+        return view('Customers.customers',[
             'customers'=>$customers
         ]);
     }
