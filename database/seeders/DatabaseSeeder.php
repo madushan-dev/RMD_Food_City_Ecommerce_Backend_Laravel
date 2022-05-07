@@ -48,7 +48,8 @@ class DatabaseSeeder extends Seeder
             'cost_price' => '60',
             'selling_price' => '80',
             'count' => '100',
-            'category_id' => '1'
+            'category_id' => '1',
+            'product_image' => 'product.jpg'
         ]);
 
         DB::table('products')->insert([
@@ -56,7 +57,8 @@ class DatabaseSeeder extends Seeder
             'cost_price' => '80',
             'selling_price' => '100',
             'count' => '50',
-            'category_id' => '1'
+            'category_id' => '1',
+            'product_image' => 'product.jpg'
         ]);
 
         DB::table('products')->insert([
@@ -64,7 +66,8 @@ class DatabaseSeeder extends Seeder
             'cost_price' => '40',
             'selling_price' => '60',
             'count' => '50',
-            'category_id' => '2'
+            'category_id' => '2',
+            'product_image' => 'product.jpg'
         ]);
 
         DB::table('products')->insert([
@@ -72,7 +75,8 @@ class DatabaseSeeder extends Seeder
             'cost_price' => '50',
             'selling_price' => '70',
             'count' => '50',
-            'category_id' => '3'
+            'category_id' => '3',
+            'product_image' => 'product.jpg'
         ]);
 
         DB::table('products')->insert([
@@ -81,6 +85,7 @@ class DatabaseSeeder extends Seeder
             'selling_price' => '80',
             'count' => '50',
             'category_id' => '4',
+            'product_image' => 'product.jpg'
         ]);
 
         
@@ -103,26 +108,57 @@ class DatabaseSeeder extends Seeder
             'payment_amount'=>'5000'
         ]);
 
+         // Insert order_carts
+        DB::table('order_carts')->insert([
+            'customer_id' => '1',
+            'product_id' => '1',
+            'quantity' => '10'
+        ]);
+           
+        DB::table('order_carts')->insert([
+            'customer_id' => '1',
+            'product_id' => '2',
+            'quantity' => '5'
+        ]);
+          
+         DB::table('order_carts')->insert([
+                'customer_id' => '1',
+                'product_id' => '3',
+                'quantity' => '20'
+            ]);
+
+             
+        DB::table('order_carts')->insert([
+            'customer_id' => '1',
+            'product_id' => '4',
+            'quantity' => '10'
+        ]);
+
+
            // Insert order_Products
         DB::table('order_products')->insert([
             'order_id' => '1',
             'product_id' => '1',
-            'quantity' => '20'
+            'quantity' => '20',
+            'cart_id' =>'1'
         ]);
         DB::table('order_products')->insert([
             'order_id' => '1',
             'product_id' => '2',
-            'quantity' => '10'
+            'quantity' => '10',
+            'cart_id' =>'1'
         ]);
         DB::table('order_products')->insert([
             'order_id' => '1',
             'product_id' => '3',
-            'quantity' => '5'
+            'quantity' => '5',
+            'cart_id' =>'1'
         ]);
         DB::table('order_products')->insert([
             'order_id' => '1',
             'product_id' => '4',
-            'quantity' => '5'
+            'quantity' => '5',
+            'cart_id' =>'1'
         ]);
 
 

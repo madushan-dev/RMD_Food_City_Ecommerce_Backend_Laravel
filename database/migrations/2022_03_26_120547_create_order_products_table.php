@@ -20,6 +20,8 @@ return new class extends Migration
             ->onDelete('cascade');
             $table->foreignId('product_id')->constrained('products')->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->foreignId('cart_id')->constrained('order_carts')->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->boolean('is_deleted')->default(0);
             $table->timestamps();
         });
