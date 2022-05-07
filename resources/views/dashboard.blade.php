@@ -36,8 +36,8 @@
                                                 </div>
                                                 <div class="col-8 ml-auto align-self-center text-center">
                                                     <div class="m-l-10 text-white float-right">
-                                                        <h5 class="mt-0 round-inner">18090</h5>
-                                                        <p class="mb-0 ">Visits Today</p>
+                                                        <h5 class="mt-0 round-inner">{{ $total_orders }}</h5>
+                                                        <p class="mb-0 ">Total Orders</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -57,8 +57,8 @@
                                                 </div>
                                                 <div class="col-8 text-center ml-auto align-self-center">
                                                     <div class="m-l-10 text-white float-right">
-                                                        <h5 class="mt-0 round-inner">562</h5>
-                                                        <p class="mb-0 ">New Users</p>
+                                                        <h5 class="mt-0 round-inner">{{ $total_customers }}</h5>
+                                                        <p class="mb-0 ">Total Customers</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -78,8 +78,8 @@
                                                 </div>
                                                 <div class="col-8 ml-auto align-self-center text-center">
                                                     <div class="m-l-10 text-white float-right">
-                                                        <h5 class="mt-0 round-inner">7514</h5>
-                                                        <p class="mb-0 ">New Orders</p>
+                                                        <h5 class="mt-0 round-inner">Rs. {{ $total_revenue }}.00</h5>
+                                                        <p class="mb-0 ">Monthly Revenue</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -99,8 +99,8 @@
                                                 </div>
                                                 <div class="col-8 ml-auto align-self-center text-center">
                                                     <div class="m-l-10 text-white float-right">
-                                                        <h5 class="mt-0 round-inner">$32874</h5>
-                                                        <p class="mb-0">Total Sales</p>
+                                                        <h5 class="mt-0 round-inner">Rs. {{ $profit }}.00</h5>
+                                                        <p class="mb-0">Total Profit</p>
                                                     </div>
                                                 </div>
                                             </div>
