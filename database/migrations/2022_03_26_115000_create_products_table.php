@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('cost_price');
             $table->integer('selling_price');
             $table->tinyInteger('count');
+            $table->string('product_image');
             $table->foreignId('category_id')->constrained('categories')->onUpdate('cascade')
             ->onDelete('cascade');
             $table->timestamps();
