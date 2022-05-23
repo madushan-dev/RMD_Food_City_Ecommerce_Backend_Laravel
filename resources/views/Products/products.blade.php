@@ -53,11 +53,16 @@
                                                     
                                                     @foreach ($products as $product )
                                                     <tr>
-                                                        <th>{{ $product->id }}</th>
-                                                        <th>{{ $product->name }}</th>
-                                                        <th>{{ $product->cost_price }}</th>
-                                                        <th>{{ $product->selling_price }}</th>
-                                                        <th>{{ $product->count }}</th>
+                                                        <td>{{ $product->id }}
+                                                      
+                                                        
+                                                        </td>
+                                                        <td>
+                                                            <img src="images/products/{{ $product->product_image }}" alt="" class="product-image">
+                                                            {{ $product->name }}</td>
+                                                        <td>{{ $product->cost_price }}</td>
+                                                        <td>{{ $product->selling_price }}</td>
+                                                        <td>{{ $product->count }}</td>
                                                         <td>{{ $product->categories->name  }}</td>
                                                         <td>
 

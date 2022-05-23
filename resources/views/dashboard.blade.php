@@ -110,7 +110,7 @@
                                 <!-- Column -->
                             </div>
 
-                            <div class="row">
+                            <div class="row" style="display:none">
                                 <div class="col-sm-12 col-md-12 col-xl-6">
                                     <div class="card m-b-30">
                                         <div class="card-body metro-widget">
@@ -166,7 +166,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" style="display:none">
                                 <div class="col-md-12 col-xl-6">
                                     <div class="card m-b-30 h-360">
                                         <div class="card-body">
@@ -252,96 +252,32 @@
                                                 <table class="table table-hover mb-0">
                                                     <thead>
                                                         <tr>
-                                                            <th class="border-top-0 w-60">Product</th>
-                                                            <th class="border-top-0">Pro Name</th>
-                                                            <th class="border-top-0">Country</th>
-                                                            <th class="border-top-0">Order Date/Time</th>
-                                                            <th class="border-top-0">Pcs.</th>
-                                                            <th class="border-top-0">Amount ($)</th>
+                                                            <th class="border-top-0">Id</th>
+                                                            <th class="border-top-0">Date</th>
+                                                            <th class="border-top-0">Customer</th>
+                                                            <th class="border-top-0">Amount</th>
                                                             <th class="border-top-0">Status</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($order_list as $order)
+                                                            
+                                                        @endforeach
                                                         <tr>
                                                             <td>
-                                                                <img class="" src="/images/products/pro1.png" alt="user" width="40"> </td>
+                                                                {{ $order->id }}
                                                             <td>
-                                                                Chair
+                                                                {{ $order->date }}
                                                             </td>
                                                             <td>
-                                                                <img src="/images/flags/us_flag.jpg" alt="" width="30">
+                                                                {{ $order->first_name." "."$order->last_name" }}
                                                             </td>
-                                                            <td>3/09/2018 4:29 PM</td>
-                                                            <td>2</td>
-                                                            <td> $ 50</td>
+                                                            <td>{{ "Rs. ".$order->payment_amount .".00"}}</td>
                                                             <td>
-                                                                <span class="badge badge-boxed  badge-success">Shipped</span>
+                                                                <span class="badge badge-boxed  badge-success">{{ $order->status }}</span>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <img class="" src="/images/products/pro2.png" alt="user" width="40"> </td>
-                                                            <td>
-                                                                Mobile
-                                                            </td>
-                                                            <td>
-                                                                <img src="/images/flags/french_flag.jpg" alt="" width="30">
-                                                            </td>
-                                                            <td>3/15/2018 1:09 PM</td>
-                                                            <td>1</td>
-                                                            <td> $ 70</td>
-                                                            <td>
-                                                                <span class="badge badge-boxed  badge-danger">Delivered</span>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <img class="" src="/images/products/pro3.png" alt="user" width="40"> </td>
-                                                            <td>
-                                                                LED
-                                                            </td>
-                                                            <td>
-                                                                <img src="/images/flags/spain_flag.jpg" alt="" width="30">
-                                                            </td>
-                                                            <td>3/18/2018 12:09 PM</td>
-                                                            <td>3</td>
-                                                            <td> $ 200</td>
-                                                            <td>
-                                                                <span class="badge badge-boxed badge-warning">Pending</span>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <img class="" src="/images/products/pro4.png" alt="user" width="40"> </td>
-                                                            <td>
-                                                                Chair
-                                                            </td>
-                                                            <td>
-                                                                <img src="/images/flags/russia_flag.jpg" alt="" width="30">
-                                                            </td>
-                                                            <td>3/27/2018 8:27 PM</td>
-                                                            <td>2</td>
-                                                            <td> $ 20</td>
-                                                            <td>
-                                                                <span class="badge badge-boxed  badge-success">Shipped</span>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <img class="" src="/images/products/pro2.png" alt="user" width="40"> </td>
-                                                            <td>
-                                                                Mobile
-                                                            </td>
-                                                            <td>
-                                                                <img src="/images/flags/italy_flag.jpg" alt="" width="30">
-                                                            </td>
-                                                            <td>4/01/2018 5:09 PM</td>
-                                                            <td>1</td>
-                                                            <td> $ 150</td>
-                                                            <td>
-                                                                <span class="badge badge-boxed badge-warning">Pending</span>
-                                                            </td>
-                                                        </tr>
+                                                 
 
                                                     </tbody>
                                                 </table>                                                

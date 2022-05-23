@@ -3771,6 +3771,10 @@ body.fixed-left .side-menu.left {
   animation: a-animate-blink 1s step-start 0s infinite;
   animation-fill-mode: initial;
 }
+.product-image{
+  width: 60px;
+  padding-right: 20px;
+}
 
 @-webkit-keyframes a-animate-blink {
   50% {

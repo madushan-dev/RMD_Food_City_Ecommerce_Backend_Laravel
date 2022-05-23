@@ -29,63 +29,163 @@ class DatabaseSeeder extends Seeder
 
         // Insert categories
         DB::table('categories')->insert([
+            'name' => 'Fast Foods'
+        ]);
+        DB::table('categories')->insert([
             'name' => 'Biscuits'
         ]);
         DB::table('categories')->insert([
-            'name' => 'Drinks'
+            'name' => 'Dry Foods'
         ]);
         DB::table('categories')->insert([
-            'name' => 'Soaps'
+            'name' => 'Oils & Cooking'
         ]);
         DB::table('categories')->insert([
-            'name' => 'Foods'
+            'name' => 'Vegitables'
         ]);
+        DB::table('categories')->insert([
+            'name' => 'Spices'
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Beverages'
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Health & Fashion'
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Household'
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Stationary'
+        ]);
+    
+    
+        DB::table('categories')->insert([
+            'name' => 'Others'
+        ]);
+
+
 
 
         // Insert Products
-        DB::table('products')->insert([
-            'name' => 'Maliban Chocolate Biscuit',
-            'cost_price' => '60',
-            'selling_price' => '80',
-            'count' => '100',
-            'category_id' => '1',
-            'product_image' => 'product.jpg'
-        ]);
-
-        DB::table('products')->insert([
-            'name' => 'Munchi Cream Cracker',
-            'cost_price' => '80',
-            'selling_price' => '100',
-            'count' => '50',
-            'category_id' => '1',
-            'product_image' => 'product.jpg'
-        ]);
-
-        DB::table('products')->insert([
-            'name' => 'Kothmale Milk Packet',
-            'cost_price' => '40',
-            'selling_price' => '60',
-            'count' => '50',
-            'category_id' => '2',
-            'product_image' => 'product.jpg'
-        ]);
-
-        DB::table('products')->insert([
-            'name' => 'Kohomba Soap',
-            'cost_price' => '50',
-            'selling_price' => '70',
-            'count' => '50',
-            'category_id' => '3',
-            'product_image' => 'product.jpg'
-        ]);
-
+   
         DB::table('products')->insert([
             'name' => 'Maggie Noodeles',
             'cost_price' => '60',
             'selling_price' => '80',
             'count' => '50',
+            'category_id' => '1',
+            'product_image' => 'maggie-noodeles.jpg'
+        ]);
+
+        DB::table('products')->insert([
+            'name' => 'Bubbles 100g Chocolate',
+            'cost_price' => '60',
+            'selling_price' => '80',
+            'count' => '50',
+            'category_id' => '1',
+            'product_image' => 'Bubbles-chocolate.jpg'
+        ]);
+
+
+        DB::table('products')->insert([
+            'name' => 'Maliban Chocolate Biscuit',
+            'cost_price' => '60',
+            'selling_price' => '80',
+            'count' => '100',
+            'category_id' => '2',
+            'product_image' => 'Maliban-Chocolate-Biscuits.jpg'
+        ]);
+
+        DB::table('products')->insert([
+            'name' => 'Chashew Nuts 1kg',
+            'cost_price' => '80',
+            'selling_price' => '100',
+            'count' => '50',
+            'category_id' => '3',
+            'product_image' => 'chashew-nuts.jpg'
+        ]);
+
+        DB::table('products')->insert([
+            'name' => 'Sunflower Seeds 1kg',
+            'cost_price' => '80',
+            'selling_price' => '100',
+            'count' => '50',
+            'category_id' => '3',
+            'product_image' => 'Sunflower-seeds.jpg'
+        ]);
+
+        
+        DB::table('products')->insert([
+            'name' => 'Coconut Oil 1L',
+            'cost_price' => '80',
+            'selling_price' => '100',
+            'count' => '50',
             'category_id' => '4',
-            'product_image' => 'product.jpg'
+            'product_image' => 'Coconut-oil.jpg'
+        ]);
+
+        DB::table('products')->insert([
+            'name' => 'Palm Oil 1L',
+            'cost_price' => '80',
+            'selling_price' => '100',
+            'count' => '50',
+            'category_id' => '4',
+            'product_image' => 'palm-oil.jpg'
+        ]);
+
+        DB::table('products')->insert([
+            'name' => 'Potato 500g Pack',
+            'cost_price' => '80',
+            'selling_price' => '100',
+            'count' => '50',
+            'category_id' => '5',
+            'product_image' => 'potato-pack.jpg'
+        ]);
+
+        DB::table('products')->insert([
+            'name' => 'Oinion 500g Pack',
+            'cost_price' => '80',
+            'selling_price' => '100',
+            'count' => '50',
+            'category_id' => '5',
+            'product_image' => 'oinion-pack.jpg'
+        ]);
+
+        DB::table('products')->insert([
+            'name' => 'Chillie Powder 100g',
+            'cost_price' => '80',
+            'selling_price' => '100',
+            'count' => '50',
+            'category_id' => '6',
+            'product_image' => 'chillie-powder.jpg'
+        ]);
+
+        DB::table('products')->insert([
+            'name' => 'Pepper Powder 100g',
+            'cost_price' => '80',
+            'selling_price' => '100',
+            'count' => '50',
+            'category_id' => '6',
+            'product_image' => 'Pepper-powder.jpg'
+        ]);
+        DB::table('products')->insert([
+            'name' => 'Kothmale Milk Packet',
+            'cost_price' => '40',
+            'selling_price' => '60',
+            'count' => '50',
+            'category_id' => '7',
+            'product_image' => 'kothmale-milk.jpg'
+        ]);
+
+        DB::table('products')->insert([
+            'name' => 'Cocacola 1.6l Bottle',
+            'cost_price' => '40',
+            'selling_price' => '60',
+            'count' => '50',
+            'category_id' => '7',
+            'product_image' => 'cocacola-bottle.jpg'
         ]);
 
         

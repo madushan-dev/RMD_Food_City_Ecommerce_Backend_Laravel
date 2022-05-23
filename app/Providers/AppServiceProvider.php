@@ -61,9 +61,14 @@ class AppServiceProvider extends ServiceProvider
 
             $profit = $total_revenue - $total_cost;
 
+            $order_list = DB::table('orders')
+            ->leftJoin('customers','orders.customer_id','=','customers.id')
+            ->get();
+            
+      
+     
 
-
-            $view->with('total_customers', $total_customers)->with('total_orders',$total_orders)->with('total_revenue',$total_revenue)->with('profit',$profit);
+            $view->with('total_customers', $total_customers)->with('total_orders',$total_orders)->with('total_revenue',$total_revenue)->with('profit',$profit)->with('order_list',$order_list);
 
         });
 

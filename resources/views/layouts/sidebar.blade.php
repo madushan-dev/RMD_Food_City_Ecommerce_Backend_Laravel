@@ -53,9 +53,7 @@
                         <li>
                             <a href="/products/new">Add New Product</a>
                         </li>
-                        <li>
-                            <a href="/products/categories">Categories</a>
-                        </li>
+                
                     </ul>
                 </li>
                     
