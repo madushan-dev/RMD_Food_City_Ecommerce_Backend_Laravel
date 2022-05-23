@@ -247,7 +247,7 @@
                                 <div class="col-md-12 col-xl-6">
                                     <div class="card m-b-30">
                                         <div class="card-body">
-                                            <h5 class="header-title mb-3 mt-0">Order List</h5>
+                                            <h5 class="header-title mb-3 mt-0">Recent Order</h5>
                                             <div class="table-responsive">
                                                 <table class="table table-hover mb-0">
                                                     <thead>
@@ -262,7 +262,7 @@
                                                     <tbody>
                                                         @foreach ($order_list as $order)
                                                             
-                                                        @endforeach
+                                                   
                                                         <tr>
                                                             <td>
                                                                 {{ $order->id }}
@@ -274,9 +274,10 @@
                                                             </td>
                                                             <td>{{ "Rs. ".$order->payment_amount .".00"}}</td>
                                                             <td>
-                                                                <span class="badge badge-boxed  badge-success">{{ $order->status }}</span>
+                                                                <span class="badge badge-pill badge-warning p-2 ">{{ $order->status }}</span>
                                                             </td>
                                                         </tr>
+                                                        @endforeach
                                                  
 
                                                     </tbody>
@@ -293,194 +294,35 @@
                                                 <table class="table table-hover mb-0">
                                                     <thead>
                                                         <tr>
-                                                            <th class="border-top-0 w-60">Users</th>
+                                                            <th class="border-top-0 w-60"></th>
                                                             <th class="border-top-0">Name</th>
-                                                            <th class="border-top-0">Country</th>
-                                                            <th class="border-top-0">Reviews</th>
-                                                            <th class="border-top-0">Socials</th>
+                                                            <th class="border-top-0">Phone</th>
+                                                            <th class="border-top-0">Address</th>
+                                                            <th class="border-top-0">Email</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($customer_list as $customer)
+                                                            
+                                                   
                                                         <tr>
                                                             <td>
-                                                                <img class="rounded-circle" src="/images/users/avatar-2.jpg" alt="user" width="40"> </td>
+                                                                <img class="rounded-circle" src="/images/users/{{$customer->profile_photo  }}" alt="user" width="40"> </td>
                                                             <td>
-                                                                <a href="javascript:void(0);">Ruby T. Curd</a>
+                                                                <a href="javascript:void(0);">  {{ $customer->first_name." "."$customer->last_name" }}</a>
                                                             </td>
                                                             <td>
-                                                                <img src="/images/flags/us_flag.jpg" alt="" width="30">
+                                                                {{$customer->phone  }}
                                                             </td>
                                                             <td>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star-half text-warning"></i>
-                                                                <i class="mdi mdi-star-outline text-warning"></i>
+                                                                {{$customer->address  }}
                                                             </td>
                                                             <td>
-                                                                <ul class="list-unstyled list-inline">
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#">
-                                                                            <i class="ti-facebook text-primary"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#">
-                                                                            <i class="ti-linkedin text-danger"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#">
-                                                                            <i class="ti-twitter-alt text-info"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
+                                                                {{$customer->email  }}
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <img class="rounded-circle" src="/images/users/avatar-3.jpg" alt="user" width="40"> </td>
-                                                            <td>
-                                                                <a href="javascript:void(0);">William A. Johnson</a>
-                                                            </td>
-                                                            <td>
-                                                                <img src="/images/flags/french_flag.jpg" alt="" width="30">
-                                                            </td>
-                                                            <td>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star-half text-warning"></i>
-                                                                <i class="mdi mdi-star-outline text-warning"></i>
-                                                            </td>
-                                                            <td>
-                                                                <ul class="list-unstyled list-inline">
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#">
-                                                                            <i class="ti-facebook text-primary"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#">
-                                                                            <i class="ti-linkedin text-danger"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#">
-                                                                            <i class="ti-twitter-alt text-info"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <img class="rounded-circle" src="/images/users/avatar-4.jpg" alt="user" width="40"> </td>
-                                                            <td>
-                                                                <a href="javascript:void(0);">Bobby M. Gray</a>
-                                                            </td>
-                                                            <td>
-                                                                <img src="/images/flags/spain_flag.jpg" alt="" width="30">
-                                                            </td>
-                                                            <td>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star-half text-warning"></i>
-                                                                <i class="mdi mdi-star-outline text-warning"></i>
-                                                            </td>
-                                                            <td>
-                                                                <ul class="list-unstyled list-inline">
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#">
-                                                                            <i class="ti-facebook text-primary"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#">
-                                                                            <i class="ti-linkedin text-danger"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#">
-                                                                            <i class="ti-twitter-alt text-info"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <img class="rounded-circle" src="/images/users/avatar-5.jpg" alt="user" width="40"> </td>
-                                                            <td>
-                                                                <a href="javascript:void(0);">Robert N. Carlile</a>
-                                                            </td>
-                                                            <td>
-                                                                <img src="/images/flags/russia_flag.jpg" alt="" width="30">
-                                                            </td>
-                                                            <td>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star-half text-warning"></i>
-                                                                <i class="mdi mdi-star-outline text-warning"></i>
-                                                            </td>
-                                                            <td>
-                                                                <ul class="list-unstyled list-inline">
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#">
-                                                                            <i class="ti-facebook text-primary"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#">
-                                                                            <i class="ti-linkedin text-danger"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#">
-                                                                            <i class="ti-twitter-alt text-info"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <img class="rounded-circle" src="/images/users/avatar-6.jpg" alt="user" width="40"> </td>
-                                                            <td>
-                                                                <a href="javascript:void(0);">Ruby T. Curd</a>
-                                                            </td>
-                                                            <td>
-                                                                <img src="/images/flags/italy_flag.jpg" alt="" width="30">
-                                                            </td>
-                                                            <td>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star-half text-warning"></i>
-                                                                <i class="mdi mdi-star-outline text-warning"></i>
-                                                            </td>
-                                                            <td>
-                                                                <ul class="list-unstyled list-inline">
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#">
-                                                                            <i class="ti-facebook text-primary"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#">
-                                                                            <i class="ti-linkedin text-danger"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="list-inline-item">
-                                                                        <a href="#">
-                                                                            <i class="ti-twitter-alt text-info"></i>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr>
+                                                        @endforeach
+                                               
 
                                                     </tbody>
                                                 </table>
