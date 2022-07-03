@@ -40,15 +40,17 @@ class DatabaseSeeder extends Seeder
             'address' => 'Balangoda',
             'password' => bcrypt('1234'),
             'phone' => '0702617281',
+            'user_type' => 'Cashier',
             'profile_photo'=>'user.png'
         ]);
         DB::table('users')->insert([
-            'first_name' => 'Kancha',
-            'last_name' => 'Induwara',
-            'email' => 'induwara@gmail.com',
-            'address' => 'Polonnaruwa',
+            'first_name' => 'Sudeera',
+            'last_name' => 'Kavishka',
+            'email' => 'sudeera@gmail.com',
+            'address' => 'Balangoda',
             'password' => bcrypt('1234'),
             'phone' => '0772617261',
+            'user_type' => 'Manager',
             'profile_photo'=>'user.png'
         ]);
 
@@ -279,24 +281,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('1234'),
             'phone' => '0776743567',
         ]);
-        DB::table('customers')->insert([
-            'first_name' => 'Madushan',
-            'last_name' => 'Gunarathne',
-            'address' => 'Hambantota',
-            'email' => 'madushan@gmail.com',
-            'profile_photo' => 'user.png',
-            'password' => bcrypt('1234'),
-            'phone' => '0773298456',
-        ]);
-        DB::table('customers')->insert([
-            'first_name' => 'Sudeera',
-            'last_name' => 'Kavishka',
-            'address' => 'Balangoda',
-            'email' => 'sudeera@gmail.com',
-            'profile_photo' => 'user.png',
-            'password' => bcrypt('1234'),
-            'phone' => '0705261782',
-        ]);
+ 
         DB::table('customers')->insert([
             'first_name' => 'Rakshitha',
             'last_name' => 'Siriwardana',
@@ -305,15 +290,6 @@ class DatabaseSeeder extends Seeder
             'profile_photo' => 'user.png',
             'password' => bcrypt('1234'),
             'phone' => '0761342671',
-        ]);
-        DB::table('customers')->insert([
-            'first_name' => 'Avishka',
-            'last_name' => 'Yohan',
-            'address' => 'Balangoda',
-            'email' => 'avishka@gmail.com',
-            'profile_photo' => 'user.png',
-            'password' => bcrypt('1234'),
-            'phone' => '0710241562',
         ]);
         DB::table('customers')->insert([
             'first_name' => 'Wihanga',
@@ -326,95 +302,96 @@ class DatabaseSeeder extends Seeder
         ]);
 
          // Insert order
-         DB::table('orders')->insert([
-            'status' => 'Processing',
-            'customer_id' => '1',
-            'payment_type'=>'Card Payment',
-            'payment_amount'=>'5000',
-            'profit'=>'50'
-        ]);
-        DB::table('orders')->insert([
-            'status' => 'Processing',
-            'customer_id' => '2',
-            'payment_type'=>'Card Payment',
-            'payment_amount'=>'7500',
-            'profit'=>'50'
-        ]);
-        DB::table('orders')->insert([
-            'status' => 'Processing',
-            'customer_id' => '3',
-            'payment_type'=>'Card Payment',
-            'payment_amount'=>'200',
-            'profit'=>'50'
-        ]);
-        DB::table('orders')->insert([
-            'status' => 'Processing',
-            'customer_id' => '4',
-            'payment_type'=>'Card Payment',
-            'payment_amount'=>'5500',
-            'profit'=>'50'
-        ]);
-        DB::table('orders')->insert([
-            'status' => 'Processing',
-            'customer_id' => '5',
-            'payment_type'=>'Card Payment',
-            'payment_amount'=>'4500',
-            'profit'=>'50'
-        ]);
+        //  DB::table('orders')->insert([
+        //     'status' => 'Processing',
+        //     'customer_id' => '1',
+        //     'payment_type'=>'Card Payment',
+        //     'payment_amount'=>'5000',
+        //     'profit'=>'50'
+        // ]);
+        // DB::table('orders')->insert([
+        //     'status' => 'Processing',
+        //     'customer_id' => '2',
+        //     'payment_type'=>'Card Payment',
+        //     'payment_amount'=>'7500',
+        //     'profit'=>'50'
+        // ]);
+        // DB::table('orders')->insert([
+        //     'status' => 'Processing',
+        //     'customer_id' => '3',
+        //     'payment_type'=>'Card Payment',
+        //     'payment_amount'=>'200',
+        //     'profit'=>'50'
+        // ]);
+        // DB::table('orders')->insert([
+        //     'status' => 'Processing',
+        //     'customer_id' => '4',
+        //     'payment_type'=>'Card Payment',
+        //     'payment_amount'=>'5500',
+        //     'profit'=>'50'
+        // ]);
+        // DB::table('orders')->insert([
+        //     'status' => 'Processing',
+        //     'customer_id' => '5',
+        //     'payment_type'=>'Card Payment',
+        //     'payment_amount'=>'4500',
+        //     'profit'=>'50'
+        // ]);
 
          // Insert order_carts
-        DB::table('order_carts')->insert([
-            'customer_id' => '1',
-            'product_id' => '1',
-            'quantity' => '10'
-        ]);
+        // DB::table('order_carts')->insert([
+        //     'customer_id' => '1',
+        //     'product_id' => '1',
+        //     'quantity' => '10'
+        // ]);
            
-        DB::table('order_carts')->insert([
-            'customer_id' => '1',
-            'product_id' => '2',
-            'quantity' => '5'
-        ]);
+        // DB::table('order_carts')->insert([
+        //     'customer_id' => '1',
+        //     'product_id' => '2',
+        //     'quantity' => '5'
+        // ]);
           
-         DB::table('order_carts')->insert([
-                'customer_id' => '1',
-                'product_id' => '3',
-                'quantity' => '20'
-            ]);
+        //  DB::table('order_carts')->insert([
+        //         'customer_id' => '1',
+        //         'product_id' => '3',
+        //         'quantity' => '20'
+        //     ]);
 
              
-        DB::table('order_carts')->insert([
-            'customer_id' => '1',
-            'product_id' => '4',
-            'quantity' => '10'
-        ]);
+        // DB::table('order_carts')->insert([
+        //     'customer_id' => '1',
+        //     'product_id' => '4',
+        //     'quantity' => '10'
+        // ]);
 
 
            // Insert order_Products
-        DB::table('order_products')->insert([
-            'order_id' => '1',
-            'product_id' => '1',
-            'quantity' => '20',
-            'customer_id' =>'1'
-        ]);
-        DB::table('order_products')->insert([
-            'order_id' => '1',
-            'product_id' => '2',
-            'quantity' => '10',
-            'customer_id' =>'1'
-        ]);
-        DB::table('order_products')->insert([
-            'order_id' => '1',
-            'product_id' => '3',
-            'quantity' => '5',
-            'customer_id' =>'1'
-        ]);
-        DB::table('order_products')->insert([
-            'order_id' => '1',
-            'product_id' => '4',
-            'quantity' => '5',
-            'customer_id' =>'1'
-        ]);
+        // DB::table('order_products')->insert([
+        //     'order_id' => '1',
+        //     'product_id' => '1',
+        //     'quantity' => '20',
+        //     'customer_id' =>'1'
+        // ]);
+        // DB::table('order_products')->insert([
+        //     'order_id' => '1',
+        //     'product_id' => '2',
+        //     'quantity' => '10',
+        //     'customer_id' =>'1'
+        // ]);
+        // DB::table('order_products')->insert([
+        //     'order_id' => '1',
+        //     'product_id' => '3',
+        //     'quantity' => '5',
+        //     'customer_id' =>'1'
+        // ]);
+        // DB::table('order_products')->insert([
+        //     'order_id' => '1',
+        //     'product_id' => '4',
+        //     'quantity' => '5',
+        //     'customer_id' =>'1'
+        // ]);
 
 
     }
 }
+

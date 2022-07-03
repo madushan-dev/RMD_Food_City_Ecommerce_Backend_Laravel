@@ -109,7 +109,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="form-group mb-2 col-6">
-                                                        <h4 class="header-title mt-0 pb-2">Selling Price</h4>
+                                                        <h4 class="header-title mt-0 pb-2">Selling Price (Rs)</h4>
                                                     
                                                         <input type="text" name="selling_price" id="" class="form-control mb-3 product-status-form" placeholder="Enter Selling Price" value="">
                                                     </div>

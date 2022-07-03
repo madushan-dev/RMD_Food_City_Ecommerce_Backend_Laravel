@@ -124,7 +124,7 @@
                                                 <table class="table table-hover mb-0">
                                                     <thead>
                                                         <tr>
-                                                            <th class="border-top-0">Id</th>
+                                                            <th class="border-top-0">#</th>
                                                             <th class="border-top-0">Date</th>
                                                             <th class="border-top-0">Customer</th>
                                                             <th class="border-top-0">Amount</th>
@@ -137,7 +137,7 @@
                                                    
                                                         <tr>
                                                             <td>
-                                                                {{ $order->id }}
+                                                                {{ $loop->iteration }}
                                                             <td>
                                                                  {{ \Carbon\Carbon::parse($order->date)->format('Y-m-d')  }}
                                                             </td>

@@ -27,6 +27,7 @@ class DashboardController extends Controller
         $revenue_data = Order::select(DB::raw("SUM(payment_amount) as sum"))
         ->whereYear('created_at', Carbon::now()->year)
         ->whereMonth('created_at', Carbon::now()->month)
+        ->where('status','!=','Cancelled')
         ->get();
 
 
@@ -36,6 +37,7 @@ class DashboardController extends Controller
         $profit_data = Order::select(DB::raw("SUM(profit) as sum"))
         ->whereYear('created_at', Carbon::now()->year)
         ->whereMonth('created_at', Carbon::now()->month)
+        ->where('status','!=','Cancelled')
         ->get();
      
         $profit = $profit_data[0]->sum;
@@ -49,6 +51,7 @@ class DashboardController extends Controller
         ->take(5)
         ->where('orders.deleted_at', NULL)
         ->get();
+
            
 
         $customer_list = DB::table('customers')
