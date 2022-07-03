@@ -21,8 +21,12 @@ return new class extends Migration
             ->onDelete('cascade');
             $table->string('payment_type');
             $table->integer('payment_amount');
+            $table->integer('profit');
             $table->string('delivery_company')->nullable();
             $table->string('tracking_number')->nullable();
+            $table->string('delivery_name')->nullable();
+            $table->string('delivery_address')->nullable();
+            $table->string('delivery_phone')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

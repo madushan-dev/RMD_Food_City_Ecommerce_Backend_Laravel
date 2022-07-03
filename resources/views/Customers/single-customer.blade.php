@@ -58,7 +58,31 @@
                                  
                                      
                                         <div class="card-body">
-                                        <form action="{{ route('customers')}}/{{ $customer->id }}" method="POST">
+
+                                            
+                                            @if (session('success'))
+                                            <div class="alert bg-success text-center text-white">
+                                                {{ session('success') }}
+        
+        
+                                            </div>
+                                               
+                                            @endif
+
+                                            @if ($errors->any())
+                                            <div class="alert bg-danger text-white">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                            @endif
+
+
+
+
+                                        <form action="{{ route('customers')}}/{{ $customer->id }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                        
                                             <div class="general-label">

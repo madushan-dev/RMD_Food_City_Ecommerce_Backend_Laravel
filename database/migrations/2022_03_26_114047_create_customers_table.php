@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('email')->unique();
             $table->string('phone')->unique();
+            $table->bigInteger('reward_points')->default(0);
+            $table->string('affiliate_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

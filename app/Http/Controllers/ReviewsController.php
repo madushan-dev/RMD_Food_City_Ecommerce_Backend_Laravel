@@ -91,6 +91,6 @@ class ReviewsController extends Controller
     public function destroy(Review $review)
     {
         $review->delete();
-        return redirect()->route('reviews');
+        return redirect()->route('reviews')->with('success','Successfully Deleted!');
     }
 }

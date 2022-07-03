@@ -1,14 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\OrdersController;
-use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\CustomersController;
-use App\Http\Controllers\EmployeesController;
-use App\Http\Controllers\MessagesController;
-use App\Http\Controllers\SettingsController;
-use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\SuppliersController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ReceivingsController;
+use App\Mail\SalesInvoiceMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +27,16 @@ use App\Http\Controllers\ProfileController;
 |
 */
 // Login Page Routes
-Route::get('/',function(){
-    return view('dashboard');
-})->middleware(['auth']);
+// Route::get('/',function(){
+//     return view('dashboard');
+// })->middleware(['auth']);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/', [DashboardController::class, 'index'])->middleware(['auth']);
+
+
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
 
 // Orders Routes
@@ -48,6 +57,50 @@ Route::controller(ProductsController::class)->group(function () {
     Route::post('/products/{product}', 'update'); 
     
 });
+
+// Categories Routes
+Route::controller(CategoriesController::class)->group(function () {
+    Route::get('/categories', 'index')->name('categories');
+    Route::delete('/categories/{category}', 'destroy');
+    Route::post('/categories/new', 'store');
+    
+});
+
+// Brands Routes
+Route::controller(BrandsController::class)->group(function () {
+    Route::get('/brands', 'index')->name('brands');
+    Route::delete('/brands/{brand}', 'destroy');
+    Route::post('/brands/new', 'store');
+    
+});
+
+// Suppliers routes
+
+Route::controller(SuppliersController::class)->group(function () {
+    Route::get('/suppliers', 'index')->name('suppliers');
+    Route::get('/suppliers/new', 'new');
+    Route::post('/suppliers/new', 'store');
+    Route::get('/suppliers/{supplier}', 'show');
+    Route::post('/suppliers/{supplier}', 'update');
+    Route::delete('/suppliers/{supplier}', 'destroy');
+});
+
+
+// Receivings routes
+
+Route::controller(ReceivingsController::class)->group(function () {
+    Route::get('/receivings', 'index')->name('receivings');
+    Route::get('/receivings/new', 'new');
+    Route::post('/receivings/new', 'store');
+    Route::get('/receivings/{receiving}', 'show');
+    Route::post('/receivings/{supplier}', 'update');
+    Route::delete('/receivings/{supplier}', 'destroy');
+});
+
+
+
+
+
 
 // Customers routes
 Route::controller(CustomersController::class)->group(function () {

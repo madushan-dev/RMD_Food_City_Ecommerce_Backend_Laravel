@@ -38,16 +38,36 @@ class EmployeesController extends Controller
      */
     public function store(Request $request)
     {
+        $validate = $request->validate([
+            'first_name' =>'required',
+            'last_name' =>'required',
+            'profile_photo'=>'required',
+            'address' =>'required',
+            'email' =>'required',
+            'phone' =>'required',
+            'user_type' =>'required',
+            'password' => 'required',
+        ]);
+
+
+        $newImageName = time().".".$request->profile_photo->extension();
+        $request->profile_photo->move(public_path('images/users'),$newImageName);
+
+
         $employee = Employee::create([
             'first_name' =>$request->input('first_name'),
             'last_name' =>$request->input('last_name'),
+            'profile_photo'=>$newImageName,
             'address' =>$request->input('address'),
             'email' =>$request->input('email'),
             'phone' =>$request->input('phone'),
+            'user_type' =>$request->input('user_type'),
             'password' => bcrypt($request->input('password'))
         ]);
 
-        return redirect()->route('employees');
+        
+
+        return redirect()->route('employees')->with('success','Employeer Successfully Added!');
 
     }
 
@@ -61,7 +81,7 @@ class EmployeesController extends Controller
     {
         $employee->get();
        
-        return view('Employees.single-employee');
+        return view('Employees.single-employee',compact('employee','employee'));
     }
 
     /**
@@ -84,16 +104,26 @@ class EmployeesController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-               $validate = $request->validate([
+        $validate = $request->validate([
             'first_name'=>'required',
             'last_name'=>'required',
             'address'=>'required',
             'email'=>'required',
-            'phone'=>'required'
+            'phone'=>'required',
+            'user_type'=>'required'
         ]);
 
+
+        
+        if($request->profile_photo != "" && $request->profile_photo !=null){
+            $newImageName = time().".".$request->profile_photo->extension();
+            $request->profile_photo->move(public_path('images/users'),$newImageName);
+            $validate['profile_photo'] = $newImageName;
+        }  
+
+
         $employee->update($validate);
-        return redirect()->back();
+        return redirect()->back()->with('success','Successfully Updated!');
     }
 
     /**
@@ -105,7 +135,7 @@ class EmployeesController extends Controller
     public function destroy(Employee $employee)
     {
         $employee->delete();
-        return redirect()->route('employees');
+        return redirect()->route('employees')->with('success','Successfully Deleted!');
     }
 
         /**

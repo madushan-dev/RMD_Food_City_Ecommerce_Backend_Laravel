@@ -8,8 +8,8 @@
     <div class="topbar-left">
         <div class="text-center">
             <!--<a href="index.html" class="logo"><i class="mdi mdi-assistant"></i> Urora</a>-->
-            <a href="index.html" class="logo">
-                <img src="/images/rmd-logo.png" alt="" class="img-fluid" style="width: 25%">
+            <a href="/" class="logo">
+               <p class="text-white font-weight-bold" style="font-size: 130% !important;">RMD FOOD CITY</p>
             </a>
         </div>
     </div>
@@ -53,6 +53,12 @@
                         <li>
                             <a href="/products/new">Add New Product</a>
                         </li>
+                        <li>
+                            <a href="/categories">Categories</a>
+                        </li>
+                        <li>
+                            <a href="/brands">Brands</a>
+                        </li>
                 
                     </ul>
                 </li>
@@ -76,28 +82,48 @@
                     </ul>
                 </li>
 
+                @php
+                    $user_type = Auth::user()->user_type;
+                @endphp
+
+                @if ( $user_type != "Cashier")
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect">
-                        <i class="fa fa-newspaper-o"></i>
-                        <span> Reports </span>
+                        <i class="fa fa-user-plus"></i>
+                        <span>Suppliers </span>
                         <span class="float-right">
                             <i class="mdi mdi-chevron-right"></i>
                         </span>
                     </a>
-                    
                     <ul class="list-unstyled">
                         <li>
-                            <a href="ui-badge.html">Sales Report</a>
+                            <a href="/suppliers">All Suppliers</a>
                         </li>
                         <li>
-                            <a href="ui-badge.html">Items Stock Report</a>
+                            <a href="/suppliers/new">New Supplier</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect">
+                        <i class="fa fa-th-large"></i>
+                        <span>Recievings </span>
+                        <span class="float-right">
+                            <i class="mdi mdi-chevron-right"></i>
+                        </span>
+                    </a>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="/receivings">All Receivings</a>
                         </li>
                         <li>
-                            <a href="ui-badge.html">Customers Report</a>
+                            <a href="/receivings/new">New Recieving</a>
                         </li>
                     </ul>
                 </li>
 
+
+                @if ($user_type != "Manager")
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect">
                         <i class="fa fa-users"></i>
@@ -116,6 +142,9 @@
                         
                     </ul>
                 </li>
+                    
+                @endif
+      
 
                 <li>
                     <a href="/messages" class="waves-effect">
@@ -133,6 +162,7 @@
                         </span>
                     </a>
                 </li>
+                @if ($user_type != "Manager")
                 <li>
                     <a href="/settings" class="waves-effect">
                         <i class="fa fa-gear"></i>
@@ -141,6 +171,10 @@
                         </span>
                     </a>
                 </li>
+                @endif
+                
+                    
+                @endif
                 <li>
                     <a href="/profile" class="waves-effect">
                         <i class="fa fa-user"></i>
@@ -149,6 +183,9 @@
                         </span>
                     </a>
                 </li>
+
+
+                
 
             </ul>
         </div>

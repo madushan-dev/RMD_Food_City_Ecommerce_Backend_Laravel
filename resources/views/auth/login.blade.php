@@ -63,6 +63,14 @@ footer{
         <div class="display-table">
             <div class="display-table-cell">
                 <diV class="container">
+                    <div class="">
+                        <div class="pt-3">
+                            <p class="font-weight-bold h6r text-center px-2" style="font-size: 45px;background:rgba(255, 255, 255, 0.527);border-radius:10px;">Welcome To RMD Food City E-Shopping Platform</p>
+                    	</div>
+                        <br><br>
+
+
+                    </div>
                     <div class="row" style="align-items:center;">
                         <div class="col-md-6">
                             <img src="/images/rmd-logo.png" alt="" class="img-fluid logo">
@@ -70,9 +78,7 @@ footer{
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="text-center pt-3">
-                                      <p class="font-weight-bold h6r" style="font-size: 120%">Welcome To RMD Food City E-Shopping Platform</p>
-                                    </div>
+                                
                                     <div class="px-3 pb-3">
                                         <x-jet-validation-errors class="mb-4 login-errors" />
 

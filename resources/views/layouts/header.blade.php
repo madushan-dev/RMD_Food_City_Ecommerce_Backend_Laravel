@@ -24,6 +24,7 @@
      
            
            <link href="/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" /> 
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 
         <!--Morris Chart CSS -->
         <link rel="stylesheet" href="/plugins/fullcalendar/vanillaCalendar.css"/>
@@ -39,5 +40,8 @@
         <link rel="stylesheet" href="/css/bootstrap-material-design.min.css" type="text/css">
         <link rel="stylesheet" href="/css/icons.css" type="text/css">
         <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+        
+        
 
     </head>

@@ -14,5 +14,5 @@ class Employee extends Model
     
     protected $table = 'users';
     protected $primarykey = 'id';
-    protected $fillable = ['first_name','last_name','phone','email','address','profile_photo','password'];
+    protected $fillable = ['first_name','last_name','phone','email','address','profile_photo','password','user_type'];
 }

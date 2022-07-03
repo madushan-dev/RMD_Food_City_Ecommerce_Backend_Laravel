@@ -47,7 +47,7 @@
                                 <div class="clearfix"></div>
                             </div>
                             <!-- end page title end breadcrumb -->
-   
+                     
                             
                  
                           
@@ -56,12 +56,39 @@
                                     <div class="card m-b-30 pb-5">
                                  
                                         <div class="card-body pl-5">
+
+                                       
+                                            <div class="invoice-header">
+                                                <div>
+                                                    <img src="/images/rmd-logo.png" alt="" class="invoice-logo">
+                                                </div>
+                                                <div>
+                                                    <h5 class="invoice-heading text-center mb-4">SALES INVOICE</h5>
+                                                    <div class="only-print">
+        
+                                                        <h6 class="text-center">RMD Food City </h6>
+                                                        <h6 class="text-center">305 Gonagala - Passara Rd, Hindagoda</h6>
+                                                        <h6 class="text-center"> 071 557 2723</h6>
+        
+                                                    </div>
+                                                
+
+                                                </div>
+                                     
+
+                                            </div>
+
+                                  
+
+
+
+
                                        
                                             <div class="general-label">
 
                                                 <div class="order-customer row bg-success py-3 mr-1">
                                                    
-                                                    <div class="col-md-4 col-xl-4 d-flex align-items-center justify-content-center">
+                                                    <div class="col-md-4 col-xl-4 d-flex align-items-center justify-content-center invoice-profile-image">
                                                   
                                                         
                                                         <img src="/images/users/user.png" alt="" width="80%">
@@ -70,9 +97,9 @@
                                                     <div class="col-md-8 col-xl-8 d-flex flex-column justify-content-center align-items-start pt-3 text-white">
 
                                                         <p class="order-userdetails">Order Id - {{ $order->id }}</p>
-                                                       <p class="order-userdetails">Customer Name - {{ $order->customers->first_name . " ".  $order->customers->last_name}} </p>
-                                                       <p class="order-userdetails">Customer Address - {{ $order->customers->address }}</p>
-                                                       <p class="order-userdetails"> Customer Phone - {{ $order->customers->phone }}</p>  
+                                                       <p class="order-userdetails">Delivery Name - {{ $order->delivery_name}} </p>
+                                                       <p class="order-userdetails">Delivery Address - {{ $order->delivery_address }}</p>
+                                                       <p class="order-userdetails"> Delivery Phone - {{ $order->delivery_phone }}</p>  
                                                        <p class="order-userdetails"> Payment Type  - {{ $order->payment_type }}</p>  
                                                         
                                                        
@@ -104,8 +131,8 @@
                                                             <th scope="row">{{ ++$loop->index }}</th>
                                                             <td>{{ $product->name }}</td>
                                                             <td class="text-right">Rs. {{ $product->selling_price }}.00</td>
-                                                            <td class="text-right">{{ $product->count }}</td>
-                                                            <td class="text-right">Rs. {{ $product->selling_price * $product->count }}.00</td>
+                                                            <td class="text-right">{{ $product->quantity }}</td>
+                                                            <td class="text-right">Rs. {{ $product->selling_price * $product->quantity }}.00</td>
                                                         </tr>
                                                         @endforeach
                                                   
@@ -135,8 +162,8 @@
                                        
                                             <div class="general-label">
                                                    
-                                                    <div class="form-group mb-3">
-                                                        <h4 class="header-title mt-0 pb-2">Change Order Status</h4>
+                                                    <div class="form-group mb-3 invoice-order-status">
+                                                        <h4 class="header-title mt-0 pb-2">Order Status</h4>
                                                        
                                                
                                                         <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="status">
@@ -173,7 +200,7 @@
                                                           
                                                         </select>       
                                                     </div>   <div class="form-group mb-3">
-                                                        <h4 class="header-title mt-0 pb-2">Enter Delivery Details</h4>
+                                                        <h4 class="header-title mt-0 pb-2">Delivery Details</h4>
                                                        
                                                         <input type="text" name="delivery_company" id="" class="form-control mb-3 order-status-form" placeholder="Delivery Company" value="{{ $order->delivery_company }}">
 
@@ -183,20 +210,44 @@
                                                   
                                              
                                             </div>
-                                            <button type="submit" class="btn btn-primary btn-raised mb-0 w-100">Submit</button>
+                                            <button type="submit" class="btn btn-primary btn-raised mb-0 w-100 invoice-hide">Submit</button>
                                         </form>
 
-                                        <form action="{{ route('orders')}}/{{ $order->id }}" method="POST">
+                                        <form action="{{ route('orders')}}/{{ $order->id }}" method="POST" class="invoice-hide">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-raised mb-0 w-100">Delete</button>
                                         </form>
+
+                                        <button class="btn btn-primary invoice-hide" onclick="window.print()">Print Invoice</button>
+
+
+
+                                        @if (session('success'))
+                                        <div class="alert bg-success text-center text-white">
+                                            {{ session('success') }}
+    
+    
+                                        </div>
+                                           
+                                        @endif
+
+                                        @if ($errors->any())
+                                            <div class="alert bg-danger text-center text-white">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
                                                     
                                         </div>
                                   
                                         
                                    
                                     </div>
+                       
                                 </div> <!-- end col -->
                                                                                                                                          
                             </div> <!-- end row -->

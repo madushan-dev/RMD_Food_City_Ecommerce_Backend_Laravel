@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('order_products', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('quantity');
-            $table->foreignId('order_id')->constrained('orders')->onUpdate('cascade')
-            ->onDelete('cascade');
+            $table->foreignId('order_id')->nullable()->constrained('orders');
             $table->foreignId('product_id')->constrained('products')->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->foreignId('cart_id')->constrained('order_carts')->onUpdate('cascade')
+            $table->foreignId('customer_id')->constrained('customers')->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->string('status')->default('pending');
             $table->boolean('is_deleted')->default(0);
             $table->timestamps();
         });

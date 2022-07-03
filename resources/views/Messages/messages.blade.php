@@ -49,7 +49,15 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="card m-b-30">
-                                        <div class="card-body">            
+                                        <div class="card-body">    
+                                            @if (session('success'))
+                                            <div class="alert bg-success text-center text-white">
+                                                {{ session('success') }}
+        
+        
+                                            </div>
+                                               
+                                            @endif          
                                                       
                                             <table id="datatable-buttons" class="table table-striped table-bordered w-100">
                                                 <thead>
@@ -87,7 +95,7 @@
                                                         <form action="{{ route('messages')}}/{{ $message->id }}" method="POST" class="m-0">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" class="btn btn-raised btn-danger  px-3 py-0">
+                                                                <button type="submit" class="btn btn-raised btn-danger  px-3 py-0 show_confirm">
                                                                     Delete </button>
                                                             </form>
                                                 </tr>
@@ -121,6 +129,31 @@
 
 
     </body>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+ 
+        $('.show_confirm').click(function(event) {
+            console.log('clicked');
+             var form =  $(this).closest("form");
+             var name = $(this).data("name");
+             event.preventDefault();
+             swal({
+                 title: `Do you want to delete this record?`,
+                 icon: "warning",
+                 buttons: true,
+                 dangerMode: true,
+             })
+             .then((willDelete) => {
+               if (willDelete) {
+                 form.submit();
+               }
+             });
+         });
+     
+   </script>
 </html>
 
 @endsection

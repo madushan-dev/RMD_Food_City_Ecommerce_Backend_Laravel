@@ -38,16 +38,33 @@ class CustomersController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validate = $request->validate([
+            'first_name' =>'required',
+            'last_name' =>'required',
+            'profile_photo'=>'required',
+            'address' =>'required',
+            'email' =>'required',
+            'phone' =>'required',
+            'password' => 'required',
+        ]);
+
+        
+        $newImageName = time().".".$request->profile_photo->extension();
+        $request->profile_photo->move(public_path('images/users'),$newImageName);
+
+
         $customer = Customer::create([
             'first_name' =>$request->input('first_name'),
             'last_name' =>$request->input('last_name'),
+            'profile_photo'=>$newImageName,
             'address' =>$request->input('address'),
             'email' =>$request->input('email'),
             'phone' =>$request->input('phone'),
             'password' => bcrypt($request->input('password'))
         ]);
 
-        return redirect()->route('customers');
+        return redirect()->route('customers')->with('success','Customer Successfully Added!');
 
     }
 
@@ -91,8 +108,16 @@ class CustomersController extends Controller
             'phone'=>'required'
         ]);
 
+        if($request->profile_photo != "" && $request->profile_photo !=null){
+            $newImageName = time().".".$request->profile_photo->extension();
+            $request->profile_photo->move(public_path('images/users'),$newImageName);
+            $validate['profile_photo'] = $newImageName;
+        }  
+
+
+
         $customer->update($validate);
-        return redirect()->back();
+        return redirect()->back()->with('success','Successfully Updated!');
     }
 
     /**
@@ -104,7 +129,7 @@ class CustomersController extends Controller
     public function destroy(Customer $customer)
     {
         $customer->delete();
-        return redirect()->route('customers');
+        return redirect()->route('customers')->with('success','Successfully Deleted!');
     }
 
     /**

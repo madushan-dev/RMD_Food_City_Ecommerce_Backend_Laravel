@@ -58,7 +58,26 @@
                                  
                                      
                                         <div class="card-body">
-                                        <form action="{{ route('employees')}}/{{ $employee->id }}" method="POST">
+                                            @if (session('success'))
+                                            <div class="alert bg-success text-center text-white">
+                                                {{ session('success') }}
+        
+        
+                                            </div>
+                                               
+                                            @endif
+
+                                            @if ($errors->any())
+                                            <div class="alert bg-danger text-white">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                            @endif
+
+                                        <form action="{{ route('employees')}}/{{ $employee->id }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                        
                                             <div class="general-label">
@@ -95,10 +114,48 @@
                                                         <input type="text" name="address" id="" class="form-control mb-3 customer-status-form" placeholder="Enter Address" value="{{ $employee->address }}">
                                                     </div>
                                                     <div class="form-group mb-2 col-6">
+                                                        <h4 class="header-title mt-0 pb-2">User Type</h4>
+                                                    <select class="form-control" name="user_type" id="" >
+                                                        @php
+                                                            $selected = $employee->user_type;
+                                                        @endphp
+                                                        <option value="Admin"
+                                                            @if ($selected == 'Admin')
+                                                            {{ 'selected' }}
+                                                            @endif                                            
+                                                        >Admin</option>
+
+
+                                                        <option value="Manager"
+                                                            @if ($selected == 'Manager')
+                                                            {{ 'selected' }}
+                                                            @endif 
+
+                                                        >Manager</option>
+
+
+                                                        <option value="Cashier"
+                                                            @if ($selected == 'Cashier')
+                                                            {{ 'selected' }}
+                                                            @endif 
+                                                        
+                                                        
+                                                        >Cashier</option>
+                                                       
+
+                                                    </select>
+                                                    </div>
+                                                    
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="form-group mb-2 col-6">
                                                         <h4 class="header-title mt-0 pb-2">Profile Photo</h4>
                                                     
                                                         <input type="file" name="profile_photo" id="" class="form-control mb-3 customer-status-form" placeholder="" value="{{ $employee->profile_photo }}">
                                                     </div>
+                                            
+                                                    
 
                                                 </div>
                                                    
@@ -110,7 +167,7 @@
                                             <div class="row">
                                                 
                                             </div>
-                                            <button type="submit" class="btn btn-primary btn-raised mb-0 w-100">Submit</button>
+                                            <button type="submit" class="btn btn-primary btn-raised mb-0 w-100 mt-4">Submit</button>
                                         </form>
                                                     
                                         </div>

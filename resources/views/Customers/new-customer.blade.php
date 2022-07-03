@@ -58,7 +58,25 @@
                                  
                                      
                                         <div class="card-body">
-                                        <form action="{{ route('customers')}}/new" method="POST">
+
+                                            
+                                            @if ($errors->any())
+                                            <div class="alert bg-danger text-white">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                            @endif
+
+
+
+
+
+
+
+                                        <form action="{{ route('customers')}}/new" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                        
                                             <div class="general-label">
@@ -107,7 +125,7 @@
                                                     <div class="form-group mb-2 col-6">
                                                         <h4 class="header-title mt-0 pb-2">Profile Photo</h4>
                                                     
-                                                        <input type="file" name="profile_photo_path" id="" class="form-control mb-3 customer-status-form" placeholder="">
+                                                        <input type="file" name="profile_photo" id="" class="form-control mb-3 customer-status-form" placeholder="">
                                                     </div>
 
                                                 </div>

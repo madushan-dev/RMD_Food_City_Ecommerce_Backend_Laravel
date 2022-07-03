@@ -34,7 +34,15 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="card m-b-30">
-                                        <div class="card-body">            
+                                        <div class="card-body">   
+                                            @if (session('success'))
+                                            <div class="alert bg-success text-center text-white">
+                                                {{ session('success') }}
+        
+        
+                                            </div>
+                                               
+                                            @endif         
                                                       
                                             <table id="datatable-buttons" class="table table-striped table-bordered w-100">
                                                 <thead>
@@ -60,51 +68,22 @@
                                                         <td>
                                                             <img src="images/products/{{ $product->product_image }}" alt="" class="product-image">
                                                             {{ $product->name }}</td>
-                                                        <td>{{ $product->cost_price }}</td>
-                                                        <td>{{ $product->selling_price }}</td>
+                                                        <td>{{ "Rs ". $product->cost_price . ".00 " }}</td>
+                                                        <td>{{"Rs ". $product->selling_price. ".00 " }}</td>
                                                         <td>{{ $product->count }}</td>
                                                         <td>{{ $product->categories->name  }}</td>
-                                                        <td>
+                                                        <td class="text-right d-flex align-items-center">
 
                                                         <a href="{{ route('products') ."/". $product->id }}" type="button" class="btn btn-raised btn-primary px-3 py-0 mr-1" style="height:100%">
                                                             Edit 
                                                         </a>
 
-                                                        <button type="submit" class="btn btn-raised btn-danger  px-3 py-0" data-toggle="modal" data-target="#deleteModal">
-                                                            Delete 
-                                                        </button>
-
-                                                        <!-- The Modal -->
-                                                        <div class="modal fade" id="deleteModal">
-                                                            <div class="modal-dialog modal-dialog-centered">
-                                                                <div class="modal-content">
-      
-                                                                    <!-- Modal Header -->
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title">Confirmation...!</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                    </div>
-        
-                                                                    <!-- Modal body -->
-                                                                    <div class="modal-body">
-                                                                       This action cannot be undone!
-                                                                    </div>
-        
-                                                                    <!-- Modal footer -->
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-raised btn-secontary" data-dismiss="modal">Cancel</button>
-                                                                        <form action="{{ route('products')}}/{{ $product->id }}" method="POST" class="m-0">
-                                                                            @csrf
-                                                                            @method('DELETE')
-                                                                            <button type="submit" class="btn btn-raised btn-danger ml-2">
-                                                                                Delete 
-                                                                            </button>
-                                                                        </form>
-                                                                    </div>
-        
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        <form action="{{ route('products') ."/". $product->id }}" method="POST" class="m-0">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-raised btn-danger  px-3 py-0  show_confirm " title='Delete'>
+                                                                Delete </button>
+                                                        </form>
                                                         </td>
                                                     </tr>
                                                     @endforeach
@@ -125,6 +104,31 @@
         </div>
         <!-- END wrapper -->
     </body>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+ 
+        $('.show_confirm').click(function(event) {
+            console.log('clicked');
+             var form =  $(this).closest("form");
+             var name = $(this).data("name");
+             event.preventDefault();
+             swal({
+                 title: `Do you want to delete this record?`,
+                 icon: "warning",
+                 buttons: true,
+                 dangerMode: true,
+             })
+             .then((willDelete) => {
+               if (willDelete) {
+                 form.submit();
+               }
+             });
+         });
+     
+   </script>
 </html>
 
 @endsection

@@ -20,7 +20,10 @@ return new class extends Migration
             $table->integer('selling_price');
             $table->tinyInteger('count');
             $table->string('product_image');
+            $table->string('description');
             $table->foreignId('category_id')->constrained('categories')->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->foreignId('brand_id')->constrained('brands')->onUpdate('cascade')
             ->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();

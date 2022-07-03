@@ -78,6 +78,12 @@ class ProfileController extends Controller
             'phone'=>'required'
         ]);
 
+        if($request->profile_photo != "" && $request->profile_photo !=null){
+            $newImageName = time().".".$request->profile_photo->extension();
+            $request->profile_photo->move(public_path('images/users'),$newImageName);
+            $validate['profile_photo'] = $newImageName;
+        }
+
         $employee->update($validate);
         return redirect()->back();
     }

@@ -4024,3 +4024,35 @@ File: Responsive
 div.dataTables_wrapper div.dataTables_filter input {
   color: black !important;
 }
+
+.invoice-heading{
+  font-weight: bold;
+}
+@media screen {
+  .only-print,.invoice-logo{
+    display: none !important;
+  }
+ 
+
+}
+
+@media print {
+  .invoice-profile-image,.invoice-order-status,.invoice-hide{
+    display: none !important;
+  }
+  .invoice-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid black;
+  }
+  .invoice-header div{
+    flex: 1;
+  
+  }
+
+}
+
+.invoice-logo{
+  max-width: 30% !important;
+}

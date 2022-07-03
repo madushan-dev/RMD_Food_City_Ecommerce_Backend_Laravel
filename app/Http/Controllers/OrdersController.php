@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Order;
-use App\Models\OrderProduct;
 use App\Models\Product;
+use App\Models\OrderProduct;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class OrdersController extends Controller
 {
@@ -16,7 +17,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = Order::with('customers')->get();
+        $orders = Order::with('customers')->orderBy('date','desc')->get();
  
    
         return view('Orders.orders',[
@@ -79,14 +80,66 @@ class OrdersController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        $validate = $request->validate([
-            'delivery_company'=>'required',
-            'tracking_number'=>'required',
-            'status'=>'required'
-        ]);
+        if($request->status=='On Delivery'){
+            $validate = $request->validate([
+                'delivery_company'=>'required',
+                'tracking_number'=>'required',
+                'status'=>'required'
+            ]);
+        }else{
+            $validate = $request->validate([
+                'status'=>'required'
+            ]);
+    
+
+        }
+
+
+
+    
 
         $order->update($validate);
-        return redirect()->back();
+
+
+        $order->load('customers');
+        $customer_email= $order->customers->email;
+        $customer_phone= $order->customers->phone;
+        $customer_name= $order->customers->first_name." ". $order->customers->last_name;
+        $order_status= $order->status;
+        $order_id= $order->id;
+        $date=Carbon::now();
+        $delivery_company= $request->delivery_company;
+        $tracking_num = $request->tracking_number;
+
+ 
+        // Send SMS
+        // SmsController::sendOrderUpdate($customer_name,$customer_phone,$order_id,$order_status,$date, $delivery_company,$tracking_num);
+
+
+        // Send email
+        // MailController::sendOrderUpdate($customer_name,$customer_email,$order_id,$order_status,$date, $delivery_company,$tracking_num);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        return redirect()->back()->with('success','Successfully Updated!');
     }
 
     /**
@@ -98,7 +151,7 @@ class OrdersController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
-        return redirect()->route('orders');
+        return redirect()->route('orders')->with('success','Successfully Deleted!');
     }
 
 }

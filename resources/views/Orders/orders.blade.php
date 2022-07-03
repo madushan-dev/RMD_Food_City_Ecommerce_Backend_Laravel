@@ -49,7 +49,15 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="card m-b-30">
-                                        <div class="card-body">            
+                                        <div class="card-body">    
+                                            @if (session('success'))
+                                            <div class="alert bg-success text-center text-white">
+                                                {{ session('success') }}
+        
+        
+                                            </div>
+                                               
+                                            @endif         
                                                       
                                             <table id="datatable-buttons" class="table table-striped table-bordered w-100">
                                                 <thead>
@@ -76,16 +84,49 @@
                                                       
 
 
-                                                        <td>{{ $order->date }}</td>
+                                                        <td>{{ \Carbon\Carbon::parse($order->date)->format('Y-m-d H:i')  }}</td>
                                                         <td class="text-right">Rs. {{ $order->payment_amount }}</td>
                                                         <td class="text-right">{{ $order->payment_type }}</td>
-                                                        <td><span class="badge badge-pill badge-warning p-2 text-center w-100"> {{ $order->status }}</span></td>
+                                                        <td>
+                                                            @php
+                                                                if($order->status == "Processing"){
+                                                                    $status ="badge-warning";
+
+                                                                }elseif ($order->status == "Cancelled"){
+                                                                    $status ="badge-danger";
+
+                                                                }elseif ($order->status == "On Delivery"){
+                                                                    $status ="badge-info";
+                                                                }else{
+                                                                    $status ="badge-success";
+                                                                }
+                                                            @endphp
+                                                           
+                                                           
+                                                            <span class="badge badge-pill {{ $status }} p-2 " style="min-width:80px">
+                                                                
+                                                                
+                                                                {{ $order->status }}
+                                                            
+                                                            
+                                                            </span>
+                                                        </td>
+
+
+
+
+
+
+
+
+
+
                                                         <td class="text-right d-flex align-items-center"><a href="{{ route('orders') ."/". $order->id }}" type="button" class="btn btn-raised btn-primary px-3 py-0 mr-1" style="height:100%">
                                                             View </a>
                                                         <form action="{{ route('orders')}}/{{ $order->id }}" method="POST" class="m-0">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" class="btn btn-raised btn-danger  px-3 py-0">
+                                                                <button type="submit" class="btn btn-raised btn-danger  px-3 py-0  show_confirm " title='Delete'>
                                                                     Delete </button>
                                                             </form>
                                                 </tr>
@@ -119,6 +160,31 @@
 
 
     </body>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+ 
+        $('.show_confirm').click(function(event) {
+            console.log('clicked');
+             var form =  $(this).closest("form");
+             var name = $(this).data("name");
+             event.preventDefault();
+             swal({
+                 title: `Do you want to delete this record?`,
+                 icon: "warning",
+                 buttons: true,
+                 dangerMode: true,
+             })
+             .then((willDelete) => {
+               if (willDelete) {
+                 form.submit();
+               }
+             });
+         });
+     
+   </script>
 </html>
 
 @endsection

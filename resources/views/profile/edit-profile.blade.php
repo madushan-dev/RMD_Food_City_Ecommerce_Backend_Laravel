@@ -58,7 +58,7 @@
                                  
                                      
                                         <div class="card-body">
-                                        <form action="{{ route('profile')}}/{{ Auth::user()->id }}" method="POST">
+                                        <form action="{{ route('profile')}}/{{ Auth::user()->id }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                        
                                             <div class="general-label">

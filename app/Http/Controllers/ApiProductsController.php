@@ -71,4 +71,38 @@ class ApiProductsController extends Controller
         return Response::json($products);
     }
 
+    public function search(Request $request){
+
+
+        if($request->query('category') && $request->query('category')!='' && $request->query('product') && $request->query  ('product')!=''){
+
+            $name = $request->query('product');
+            $category = $request->query('category');
+
+            $products = Product::limit(5)->with('categories')->where('name','like','%'. $name.'%')->where('category_id', $category)->get();
+
+            return Response::json($products);
+        }
+
+
+        if($request->query('product') && $request->query('product')!=''){
+
+            $name = $request->query('product');
+
+            $products = Product::limit(5)->with('categories')->where('name','like','%'. $name.'%')->get();
+
+            return Response::json($products);
+        }
+
+        if($request->query('category') && $request->query('category')!=''){
+
+            $category = $request->query('product');
+
+            $products = Product::limit(5)->with('categories')->where('category_id', $category)->get();
+
+            return Response::json($products);
+        }
+
+    }
+
 }
