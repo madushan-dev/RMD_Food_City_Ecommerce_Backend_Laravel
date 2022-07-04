@@ -77,7 +77,7 @@
                                                   
                                                     <tr>
                                                         <td>{{ $message->id }}</td>
-                                                        <td class="text-right">{{ $message->created_at }}</td>
+                                                        <td class="text-right">{{ dateWithoutSeconds($message->created_at) }}</td>
                                                         <td>{{ $message->from }}</td>
 
                                                     

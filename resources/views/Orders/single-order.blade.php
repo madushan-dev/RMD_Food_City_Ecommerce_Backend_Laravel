@@ -97,8 +97,10 @@
                                                     <div class="col-md-8 col-xl-8 d-flex flex-column justify-content-center align-items-start pt-3 text-white">
 
                                                         <p class="order-userdetails">Order Id - {{ $order->id }}</p>
+                                                        <p class="order-userdetails">Order Date - {{ dateWithoutSeconds($order->date) }}</p>
                                                        <p class="order-userdetails">Delivery Name - {{ $order->delivery_name}} </p>
                                                        <p class="order-userdetails">Delivery Address - {{ $order->delivery_address }}</p>
+                                                       
                                                        <p class="order-userdetails"> Delivery Phone - {{ $order->delivery_phone }}</p>  
                                                        <p class="order-userdetails"> Payment Type  - {{ $order->payment_type }}</p>  
                                                         
@@ -130,9 +132,9 @@
                                                         <tr>
                                                             <th scope="row">{{ ++$loop->index }}</th>
                                                             <td>{{ $product->name }}</td>
-                                                            <td class="text-right">Rs. {{ $product->selling_price }}.00</td>
+                                                            <td class="text-right">{{ formatCurrency($product->selling_price) }}</td>
                                                             <td class="text-right">{{ $product->quantity }}</td>
-                                                            <td class="text-right">Rs. {{ $product->selling_price * $product->quantity }}.00</td>
+                                                            <td class="text-right">{{ formatCurrency($product->selling_price * $product->quantity) }}</td>
                                                         </tr>
                                                         @endforeach
                                                   
@@ -140,7 +142,7 @@
                                                     </tbody>
                                                 </table>   
                                                
-                                                <h4 class="text-center pt-3">Total Payment: Rs. {{ $order->payment_amount }}.00</h4>
+                                                <h4 class="text-center pt-3">{{ formatCurrency($order->payment_amount) }}</h4>
                                                                                                    
                                                   
                                                   

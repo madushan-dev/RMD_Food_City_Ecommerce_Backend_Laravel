@@ -80,7 +80,7 @@
                                                 <div class="col-8 ml-auto align-self-center text-center">
                                                     <div class="m-l-10 text-white float-right">
                                                   
-                                                        <h5 class="mt-0 round-inner">Rs. {{ $total_revenue }}.00</h5>
+                                                        <h5 class="mt-0 round-inner">{{ formatCurrency($total_revenue) }}</h5>
                                                         <p class="mb-0 ">Monthly Revenue</p>
                                                     </div>
                                                 </div>
@@ -102,7 +102,7 @@
                                                 <div class="col-8 ml-auto align-self-center text-center">
                                                     <div class="m-l-10 text-white float-right">
                                               
-                                                        <h5 class="mt-0 round-inner">Rs. {{ $total_profit }}.00</h5>
+                                                        <h5 class="mt-0 round-inner">{{formatCurrency($total_profit) }}.00</h5>
                                                         <p class="mb-0">Total Profit</p>
                                                     </div>
                                                 </div>
@@ -144,7 +144,7 @@
                                                             <td>
                                                                 {{ $order->first_name." "."$order->last_name" }}
                                                             </td>
-                                                            <td>{{ "Rs. ".$order->payment_amount .".00"}}</td>
+                                                            <td>{{ formatCurrency($order->payment_amount)}}</td>
                                                             <td>
                                                                 @php
                                                                     if($order->status == "Processing"){

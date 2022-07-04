@@ -12,6 +12,7 @@ class Receiving extends Model
     protected $fillable = ['date','supplier_id'];
 
 
+
     public function suppliers(){
         return $this->belongsTo(Supplier::class,'supplier_id','id');
     }

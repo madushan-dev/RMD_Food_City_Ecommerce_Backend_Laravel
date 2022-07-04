@@ -121,10 +121,14 @@ class ApiCartController extends Controller
             $affiliate_id = $request->affiliate_id;
 
             $affiliator = Customer::where('affiliate_id', $affiliate_id)->first();
+
+            if($affiliator){
+                $affiliator->reward_points  = ($affiliator->reward_points) + ($order->payment_amount*0.05);
     
-            $affiliator->reward_points  = ($affiliator->reward_points) + ($order->payment_amount*0.05);
+                $affiliator->save();
+            }
     
-            $affiliator->save();
+         
 
         }
    

@@ -74,7 +74,7 @@
                                                   
                                                     <tr>
                                                         <td>{{ $receiving->id }}</td>                           
-                                                        <td>{{ $receiving->date }}</td>
+                                                        <td>{{ dateWithoutSeconds($receiving->date) }}</td>
                                                         <td>{{ $receiving->suppliers->company }}</td>
                                                         <td class="text-right d-flex align-items-center"><a href="{{ route('receivings') ."/". $receiving->id }}" type="button" class="btn btn-raised btn-primary px-3 py-0 mr-1" style="height:100%">
                                                             View </a>

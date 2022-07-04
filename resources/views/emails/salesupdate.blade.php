@@ -6,7 +6,7 @@
 
 ### Order Number - {{ $email_data['order_id'] }}<br>
 ### Status - {{ $email_data['status'] }}<br>
-### Date - {{ $email_data['date'] }}<br>
+### Date - {{ dateWithoutSeconds($email_data['date']) }}<br>
 
 
 

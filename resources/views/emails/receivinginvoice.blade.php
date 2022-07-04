@@ -5,7 +5,7 @@
 ## Products Receiving Successful !<br>
 
 ### Receivings Number - {{ $email_data['receiving_id'] }}<br>
-### Date - {{ $email_data['date'] }}<br>
+### Date - {{ dateWithoutSeconds($email_data['date']) }}<br>
 
 
 

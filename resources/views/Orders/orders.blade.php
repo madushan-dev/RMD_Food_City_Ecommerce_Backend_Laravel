@@ -84,8 +84,8 @@
                                                       
 
 
-                                                        <td>{{ \Carbon\Carbon::parse($order->date)->format('Y-m-d H:i')  }}</td>
-                                                        <td class="text-right">Rs. {{ $order->payment_amount }}</td>
+                                                        <td>{{ dateWithoutSeconds($order->date)}}</td>
+                                                        <td class="text-right">{{ formatCurrency($order->payment_amount) }}</td>
                                                         <td class="text-right">{{ $order->payment_type }}</td>
                                                         <td>
                                                             @php

@@ -71,17 +71,17 @@
 
                                                         <p class="order-userdetails">Review Id - {{ $review->id }}</p>
 
-                                                        <p class="order-userdetails">Review Date - {{ $review->created_at }}</p>
+                                                        <p class="order-userdetails">Review Date - {{ dateWithoutSeconds($review->created_at) }}</p>
 
                                                         <p class="order-userdetails">Product - {{ $review->products->name }}</p>
 
                                                         <p class="order-userdetails"> Rating - 
                                                             @for ($i = $review->rating; $i > 0; $i--)
-                                                            <i class="mdi mdi-star"></i>
+                                                            <i class="mdi mdi-star text-warning"></i>
                                                              @endfor
 
                                                         </p>
-                                                        <p class="order-userdetails">Comment {{ $review->comment }}</p>
+                                                        <p class="order-userdetails">Comment - {{ $review->comment }}</p>
 
                                                      
                                             

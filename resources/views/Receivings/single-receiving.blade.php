@@ -94,6 +94,7 @@
                                                     <div class="col-md-8 col-xl-8 d-flex flex-column justify-content-center align-items-start pt-3 text-white">
 
                                                         <p class="order-userdetails">Receiving Id - {{ $receiving->id }}</p>
+                                                        <p class="order-userdetails">Receiving Date - {{ dateWithoutSeconds($receiving->date) }}</p>
                                                        <p class="order-userdetails">Supplier Name - {{ $receiving->suppliers->company}} </p>
                                                        <p class="order-userdetails">Supplier Address - {{ $receiving->suppliers->address }}</p>
                                                        <p class="order-userdetails"> Supplier Phone - {{ $receiving->suppliers->phone }}</p>  
@@ -129,10 +130,10 @@
                                                         <tr>
                                                             <th scope="row">{{ ++$loop->index }}</th>
                                                             <td>{{ $product->name }}</td>
-                                                            <td class="text-right">Rs. {{ $product->cost_price }}.00</td>
+                                                            <td class="text-right">{{ formatCurrency($product->cost_price) }}</td>
                                                             <td class="text-right">{{ $product->quantity }}</td>
 
-                                                            <td class="text-right">Rs. {{ $product->cost_price * $product->quantity }}.00</td>
+                                                            <td class="text-right">{{ formatCurrency($product->cost_price * $product->quantity) }}</td>
 
                                                             @php
                                                             $total_payment += $product->cost_price * $product->quantity;
@@ -148,7 +149,7 @@
                                                     </tbody>
                                                 </table>   
                                                
-                                                <h4 class="text-center pt-3">Total Payment: Rs. {{ $total_payment }}.00</h4>
+                                                <h4 class="text-center pt-3">Total Payment : {{ formatCurrency($total_payment) }}</h4>
                                                                                                    
                                                   
                                                   

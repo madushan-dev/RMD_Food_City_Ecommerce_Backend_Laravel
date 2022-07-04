@@ -80,7 +80,7 @@
                                                         <td>{{ $review->id }}</td>
 
                                                     
-                                                        <td class="w-100">{{ $review->created_at }}</td>
+                                                        <td class="w-100">{{ dateWithoutSeconds($review->created_at) }}</td>
                                               
                                                       
 
@@ -89,9 +89,9 @@
                                                         <td>{{ $review->customers->first_name ." ".$review->customers->last_name }}</td>
                                                         
                                                         
-                                                        <td class="w-100">
+                                                        <td class="w-100 p-0 ">
                                                             @for ($i = $review->rating; $i > 0; $i--)
-                                                            <i class="mdi mdi-star"></i>
+                                                            <i class="mdi mdi-star text-warning"></i>
                                                              @endfor
 
                                                         </td>

@@ -12,8 +12,8 @@ class SmsController extends Controller
     
     public static function sendOrderPlaced($name,$phone,$order_id,$date,$payment){
 
-        $account_sid = "SendTest";
-        $auth_token = "536|3JGkKmGoWiDHWwsdY5tPKTwqSw3DW4PDBxWDgwc9";
+        $account_sid = "RMDFoodCity";
+        $auth_token = "158|OAztjf7f5V3yja04bmma4U3gKbK25A5ILIPz6Xcp";
 
 
         $MSISDN = $phone;
@@ -59,8 +59,8 @@ class SmsController extends Controller
 
     public static function sendOrderUpdate($name, $phone,$order_id,$status,$date,$delivery_company,$tracking_num){
 
-        $account_sid = "SendTest";
-        $auth_token = "536|3JGkKmGoWiDHWwsdY5tPKTwqSw3DW4PDBxWDgwc9";
+        $account_sid = "RMDFoodCity";
+        $auth_token = "158|OAztjf7f5V3yja04bmma4U3gKbK25A5ILIPz6Xcp";
 
 
         $MSISDN = $phone;
@@ -104,8 +104,8 @@ class SmsController extends Controller
 
 
     public static function sendReceivingInvoice($name, $phone,$receiving_id,$date){
-        $account_sid = "SendTest";
-        $auth_token = "536|3JGkKmGoWiDHWwsdY5tPKTwqSw3DW4PDBxWDgwc9";
+        $account_sid = "RMDFoodCity";
+        $auth_token = "158|OAztjf7f5V3yja04bmma4U3gKbK25A5ILIPz6Xcp";
 
 
         $MSISDN = $phone;

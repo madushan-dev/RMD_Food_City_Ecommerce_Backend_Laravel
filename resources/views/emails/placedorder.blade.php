@@ -6,7 +6,7 @@
 
 ### Order Number - {{ $email_data['order_id'] }}<br>
 ### Name - {{ $email_data['name'] }}<br>
-### Date - {{ $email_data['date'] }}<br>
+### Date - {{ dateWithoutSeconds($email_data['date']) }}<br>
 ### Order Id - {{ $email_data['order_id'] }}<br>
 ### Payment Amount - Rs. {{ $email_data['payment'] }}.00<br>
 
