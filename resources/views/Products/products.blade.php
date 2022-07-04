@@ -68,8 +68,8 @@
                                                         <td>
                                                             <img src="images/products/{{ $product->product_image }}" alt="" class="product-image">
                                                             {{ $product->name }}</td>
-                                                        <td>{{ "Rs ". $product->cost_price . ".00 " }}</td>
-                                                        <td>{{"Rs ". $product->selling_price. ".00 " }}</td>
+                                                        <td>{{ formatCurrency($product->cost_price) }}</td>
+                                                        <td>{{formatCurrency($product->selling_price) }}</td>
                                                         <td>{{ $product->count }}</td>
                                                         <td>{{ $product->categories->name  }}</td>
                                                         <td class="text-right d-flex align-items-center">

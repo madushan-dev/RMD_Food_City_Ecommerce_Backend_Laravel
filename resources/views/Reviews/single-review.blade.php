@@ -54,8 +54,20 @@
                             <div class="row">
                                 <div class="col-md-12 col-xl-8 ">
                                     <div class="card">
+                                        @if (session('success'))
+                                        <div class="alert bg-success text-center text-white">
+                                            {{ session('success') }}
+    
+    
+                                        </div>
+                                           
+                                        @endif
                                  
                                         <div class="card-body pl-5 bg-success">
+
+                                            
+
+                          
                                        
                                             <div class="general-label">
 

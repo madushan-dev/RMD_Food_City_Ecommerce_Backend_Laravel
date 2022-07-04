@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\OrderPlacedMail;
 use App\Mail\SalesUpdateMail;
+use App\Mail\ContactReplyMail;
 use App\Mail\ReceivingInvoiceMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -55,6 +56,21 @@ class MailController extends Controller
      
 
         Mail::to($email)->send(new OrderPlacedMail($data));
+    }
+
+        
+    public static function ContactReply($name,$email,$subject,$message){
+
+        $data = [
+            'name' => $name,
+            'email' => $email,
+            'subject'=>$subject,
+            'message'=>$message
+            ];
+
+     
+
+        Mail::to($email)->send(new ContactReplyMail($data));
     }
 
 

@@ -8,7 +8,26 @@ function dateWithoutSeconds($date){
 } 
 
 function formatCurrency($amount){
-   return 'Rs '.$amount;
+
+  
+
+   if($amount == 0 || $amount == 0.00){
+
+
+      return ('Rs '."0.00");
+
+   }
+
+   $arr = explode(".",$amount);
+
+   if( count(array_filter($arr)) == 2){      
+      return ('Rs '.$amount);
+   }else{
+      return ('Rs '.$amount.".00");
+   }
+
+   
+   
  }
 
 ?>

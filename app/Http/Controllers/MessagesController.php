@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
+use App\Http\Controllers\MailController;
 
 class MessagesController extends Controller
 {
@@ -88,5 +89,20 @@ class MessagesController extends Controller
     {
         $message->delete();
         return redirect()->route('messages')->with('success','Successfully Deleted!');
+    }
+
+    public function sendreply(Message $message,Request $request)
+    {
+        $message->get();
+
+        $name =  $message->name;
+        $email = $message->from;
+        $subject = $message->subject." - ".$message->message;
+        $message_text = $request->message;
+
+       
+        
+        MailController::ContactReply($name,$email,$subject, $message_text);
+        return redirect()->back()->with('success','Email Successfully Sent!');
     }
 }

@@ -128,6 +128,7 @@ Route::controller(MessagesController::class)->group(function () {
     Route::get('/messages', 'index')->name('messages');
     Route::get('/messages/{message}', 'show');
     Route::delete('/messages/{message}', 'destroy');
+    Route::post('/messages/sendreply/{message}', 'sendreply');
 });
 // Reviews routes
 Route::controller(SettingsController::class)->group(function () {

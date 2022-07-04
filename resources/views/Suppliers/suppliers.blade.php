@@ -62,7 +62,7 @@
                                             <table id="datatable-buttons" class="table table-striped table-bordered w-100">
                                                 <thead>
                                                 <tr>
-                                                    <th>Id</th> 
+                                                    <th>Supplier Id</th> 
                                                     <th>Company</th>
                                                     <th>Address</th>
                                                     <th>Email</th>

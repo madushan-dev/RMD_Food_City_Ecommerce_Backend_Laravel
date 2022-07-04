@@ -55,7 +55,14 @@
                         
                                 <div class="col-md-12 col-xl-12">
                                     <div class="card m-b-30">
-                                 
+                                        @if (session('success'))
+                                        <div class="alert bg-success text-center text-white">
+                                            {{ session('success') }}
+    
+    
+                                        </div>
+                                           
+                                        @endif
                                      
                                         <div class="card-body">
                                             <table id="datatable" class="table table-striped table-bordered w-100">
@@ -98,13 +105,12 @@
                                             <div class="card-body">
                                                 <h5>Send Reply Email</h5>
                                                     
-                                            <form action="" method="POST">
+                                            <form action="{{ route('messages')}}/sendreply/{{ $message->id }}" method="POST">
                                                 @csrf
                                                 <div class="form-group mb-3">
                                                
-                                                <input type="text" name="reply_subject" id="" class="form-control mb-3 order-status-form" placeholder="Enter Subject">
-
-                                                <input type="text" name="reply_message" id="" class="form-control order-status-form mt-3" placeholder="Enter Message" >
+                                  
+                                                <input type="text" name="message" id="" class="form-control order-status-form mt-3" placeholder="Enter Message" >
 
                                                 <button type="submit" class="btn btn-primary btn-raised mb-0 mt-3">Send Email</button>
                                             </div>
